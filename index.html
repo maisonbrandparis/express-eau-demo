@@ -66,7 +66,7 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
   background:radial-gradient(circle,rgba(232,93,50,.30),rgba(232,93,50,0) 62%);opacity:0;pointer-events:none}
 .beams{position:absolute;left:50%;top:52%;width:150vmin;height:90vmin;transform:translate(-50%,-30%);opacity:0;
   background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(255,240,200,.22),transparent 70%);pointer-events:none;filter:blur(6px)}
-.vanwrap{position:absolute;left:50%;top:56%;width:min(760px,86vw);transform:translate(-50%,-50%);will-change:transform}
+.vanwrap{position:absolute;left:50%;top:57%;width:min(1060px,94vw);transform:translate(-50%,-50%);will-change:transform}
 .vanwrap img{width:100%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.75))}
 .speed{position:absolute;inset:0;pointer-events:none;opacity:0}
 .speed i{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5));animation:zip .5s linear infinite}
@@ -660,9 +660,9 @@ function frame(){
   const total=stage.offsetHeight-window.innerHeight;
   let p=Math.min(1,Math.max(0,(-r.top)/total));
   const e=p*p*(3-2*p);                 // easing
-  const sc=0.22+e*1.30;
-  const ty=(-16+e*22);
-  const tx=(-26+e*26);
+  const sc=0.26+e*1.02;
+  const ty=(-14+e*20);
+  const tx=(28-e*28);
   van.style.transform='translate(calc(-50% + '+tx+'%),calc(-50% + '+ty+'%)) scale('+sc.toFixed(3)+')';
   van.style.filter='blur('+Math.max(0,(1-e)*5).toFixed(1)+'px) brightness('+(0.45+e*0.6).toFixed(2)+')';
   halo.style.opacity=(e*0.9).toFixed(2);
@@ -687,7 +687,7 @@ function frame(){
 function onScroll(){ if(!tick&&!RM){tick=true;requestAnimationFrame(frame);} }
 window.addEventListener('scroll',onScroll,{passive:true});
 window.addEventListener('resize',frame);
-if(RM){P[2].classList.add('on');van.style.transform='translate(-50%,-50%) scale(1.1)';van.style.filter='none';halo.style.opacity=.8;}
+if(RM){P[2].classList.add('on');van.style.transform='translate(-50%,-50%) scale(1.05)';van.style.filter='none';halo.style.opacity=.8;}
 else frame();
 
 /* ---------- reveal ---------- */
