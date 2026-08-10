@@ -9,15 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --orange:#E85D32;
-  --vif:#FF6B2C;
-  --bleu:#1B9BD8;
-  --noir:#0A0B0C;
-  --gris:#141619;
-  --gris2:#1E2126;
-  --blanc:#F7F7F5;
-  --fume:rgba(247,247,245,.62);
-  --ligne:rgba(247,247,245,.13);
+  --orange:#F67A05;
+  --vif:#FF9226;
+  --bleu:#0B8CF3;
+  --bleu2:#4FB4FF;
+  --noir:#05080C;
+  --gris:#0B1119;
+  --gris2:#121A24;
+  --blanc:#F5F8FA;
+  --fume:rgba(245,248,250,.62);
+  --ligne:rgba(120,180,235,.16);
   --d:'Anton',Impact,sans-serif;
   --b:'IBM Plex Sans',system-ui,sans-serif;
   --m:'IBM Plex Mono',monospace;
@@ -45,15 +46,28 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 .nav ul{display:flex;gap:24px;list-style:none;margin-left:auto;font-size:.87rem;font-weight:500}
 .nav ul a{padding-bottom:3px;border-bottom:2px solid transparent}
 .nav ul a:hover{border-color:var(--orange)}
-.tel{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-weight:700;padding:11px 18px;font-size:.93rem;white-space:nowrap;transform:skewX(-8deg)}
-.tel span{transform:skewX(8deg);display:inline-flex;align-items:center;gap:8px}
-.tel:hover{background:var(--vif)}
-.tel svg{width:15px;height:15px;fill:currentColor}
+.tel{display:inline-flex;align-items:center;gap:9px;background:#fff;color:#05080C;font-weight:700;padding:11px 20px;font-size:.95rem;white-space:nowrap;border-radius:999px;letter-spacing:.01em}
+.tel span{display:inline-flex;align-items:center;gap:9px}
+.tel:hover{background:var(--bleu);color:#fff}
+.tel svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6}
+
+/* badge 24/24 7/7 de la carrosserie */
+.b247{display:inline-block;text-align:center;font-family:var(--d);line-height:1;letter-spacing:.02em}
+.b247 u{display:block;text-decoration:none;color:#fff;font-size:1.5rem}
+.b247 s{display:block;text-decoration:none;color:var(--orange);font-size:1.5rem;border-top:3px solid var(--orange);margin-top:5px;padding-top:5px}
+/* bandeau bleu de la carrosserie */
+.tagline{display:inline-block;background:var(--bleu);color:#fff;font-family:var(--m);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 18px;transform:skewX(-12deg)}
+.tagline b{display:block;transform:skewX(12deg);font-weight:400}
+/* eclaboussure diagonale */
+.slash{height:78px;position:relative;overflow:hidden;background:var(--noir)}
+.slash:before,.slash:after{content:"";position:absolute;left:-10%;width:120%;height:26px;transform:rotate(-3.5deg)}
+.slash:before{top:8px;background:linear-gradient(90deg,transparent,var(--bleu) 22%,var(--bleu2) 55%,transparent);opacity:.55;filter:blur(1px)}
+.slash:after{top:38px;height:12px;background:linear-gradient(90deg,transparent,var(--orange) 35%,var(--vif) 60%,transparent);opacity:.9}
 
 /* ======== 1. arrivée ======== */
 #arrivee{height:340vh;position:relative}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:
-   radial-gradient(120% 80% at 50% 100%,#1a1d21 0%,#0A0B0C 62%)}
+   radial-gradient(120% 80% at 50% 100%,#0d2135 0%,#05080C 64%)}
 .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 18%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 70% 12%,rgba(255,255,255,.25),transparent),radial-gradient(1px 1px at 44% 26%,rgba(255,255,255,.18),transparent);opacity:.8}
 .road{position:absolute;left:50%;bottom:0;width:190%;height:56%;transform:translateX(-50%);
   background:linear-gradient(#101215,#05060700);perspective:340px;overflow:hidden}
@@ -62,20 +76,20 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
   -webkit-mask-image:linear-gradient(transparent,#000 45%);mask-image:linear-gradient(transparent,#000 45%);
   animation:dash 1.05s linear infinite}
 @keyframes dash{to{background-position:0 108px}}
-.halo{position:absolute;left:50%;top:58%;width:120vmin;height:120vmin;transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(232,93,50,.30),rgba(232,93,50,0) 62%);opacity:0;pointer-events:none}
+.halo{position:absolute;left:50%;top:58%;width:130vmin;height:130vmin;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(11,140,243,.34),rgba(11,140,243,0) 62%);opacity:0;pointer-events:none}
 .beams{position:absolute;left:50%;top:52%;width:150vmin;height:90vmin;transform:translate(-50%,-30%);opacity:0;
   background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(255,240,200,.22),transparent 70%);pointer-events:none;filter:blur(6px)}
 .vanwrap{position:absolute;left:50%;top:57%;width:min(1060px,94vw);transform:translate(-50%,-50%);will-change:transform}
 .vanwrap img{width:100%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.75))}
 .speed{position:absolute;inset:0;pointer-events:none;opacity:0}
-.speed i{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5));animation:zip .5s linear infinite}
+.speed i{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(79,180,255,.75));animation:zip .5s linear infinite}
 @keyframes zip{from{transform:translateX(30vw)}to{transform:translateX(-110vw)}}
 
 .phases{position:absolute;left:0;right:0;top:14vh;text-align:center;padding:0 5vw;pointer-events:none}
 .ph{position:absolute;left:0;right:0;opacity:0;transform:translateY(24px);transition:opacity .45s,transform .45s}
 .ph.on{opacity:1;transform:none}
-.ph .mono{color:var(--orange);display:block;margin-bottom:14px}
+.ph .mono{color:var(--bleu2);display:block;margin-bottom:14px}
 .ph .big{font-size:clamp(2.4rem,8.4vw,6.6rem)}
 .ph p{color:var(--fume);margin-top:14px;font-size:clamp(.95rem,1.6vw,1.15rem)}
 .ph .tel{pointer-events:auto;margin-top:26px;font-size:1.1rem;padding:15px 26px}
@@ -86,7 +100,7 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 
 /* ======== marquee ======== */
 .band{background:var(--orange);color:#0A0B0C;padding:16px 0;overflow:hidden;white-space:nowrap;border-top:3px solid #0A0B0C;border-bottom:3px solid #0A0B0C}
-.band.dark{background:var(--noir);color:var(--blanc);border-color:var(--orange)}
+.band.dark{background:var(--bleu);color:#fff;border-color:#05080C}
 .band div{display:inline-block;animation:mq 26s linear infinite;font-family:var(--d);font-size:clamp(1.2rem,2.6vw,1.9rem);text-transform:uppercase;letter-spacing:.02em}
 .band.rev div{animation-direction:reverse}
 .band em{font-style:normal;color:#fff;-webkit-text-stroke:0}
@@ -96,12 +110,12 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 /* ======== chiffres ======== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ligne);border-block:1px solid var(--ligne)}
 .stat{background:var(--noir);padding:34px 24px}
-.stat b{display:block;font-family:var(--d);font-size:clamp(2.2rem,5vw,3.6rem);color:var(--orange);line-height:1}
+.stat b{display:block;font-family:var(--d);font-size:clamp(2.2rem,5vw,3.6rem);color:var(--bleu2);line-height:1}
 .stat span{font-size:.86rem;color:var(--fume)}
 
 /* ======== sections génériques ======== */
 .head{margin-bottom:44px}
-.head .mono{color:var(--orange);display:block;margin-bottom:16px}
+.head .mono{color:var(--bleu2);display:block;margin-bottom:16px}
 .lead{max-width:56ch;color:var(--fume);margin-top:18px;font-size:1.03rem}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
 
@@ -109,8 +123,8 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 .cmp{position:relative;overflow:hidden;background:#000;aspect-ratio:1/.98;border:1px solid var(--ligne)}
 .cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cmp .after{clip-path:inset(0 0 0 var(--x,50%))}
-.cmp .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--orange);pointer-events:none}
-.cmp .bar:after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--orange);color:#0A0B0C;display:grid;place-items:center;font-size:1.1rem;font-weight:700}
+.cmp .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--bleu2);pointer-events:none}
+.cmp .bar:after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--bleu);color:#fff;display:grid;place-items:center;font-size:1.1rem;font-weight:700}
 .cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .cmp label{position:absolute;bottom:14px;font-family:var(--m);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(10,11,12,.8);padding:6px 10px}
 .cmp .l1{left:14px}.cmp .l2{right:14px;color:var(--orange)}
@@ -118,7 +132,9 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 /* liste */
 .plist{list-style:none;margin-top:26px}
 .plist li{padding:15px 0;border-bottom:1px solid var(--ligne);display:flex;gap:16px;align-items:baseline}
-.plist i{font-style:normal;font-family:var(--m);font-size:.7rem;color:var(--orange);letter-spacing:.1em}
+.plist.check li{gap:14px}
+.plist i{font-style:normal;font-family:var(--m);font-size:.7rem;color:var(--orange);letter-spacing:.1em;font-weight:600}
+.plist.check li:before{content:"\2713";color:var(--orange);font-weight:700;font-size:1.05rem;line-height:1}
 .plist span{color:var(--fume);font-size:.94rem}
 
 /* parallaxe photo */
@@ -132,24 +148,24 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 .simgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ligne);border:1px solid var(--ligne);margin-top:44px}
 .panel{background:var(--noir);padding:clamp(24px,3vw,38px)}
 .q{margin-bottom:26px}
-.q>label{display:block;font-family:var(--m);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:11px}
+.q>label{display:block;font-family:var(--m);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bleu2);margin-bottom:11px}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opt{border:1px solid var(--ligne);background:transparent;color:var(--fume);padding:9px 14px;font-family:var(--b);font-size:.86rem;cursor:pointer;transition:.18s}
-.opt:hover{border-color:var(--orange);color:#fff}
-.opt[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#0A0B0C;font-weight:600}
+.opt:hover{border-color:var(--bleu);color:#fff}
+.opt[aria-pressed="true"]{background:var(--bleu);border-color:var(--bleu);color:#fff;font-weight:600}
 .opt:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
 .schema{background:#08090A;border:1px solid var(--ligne);margin-bottom:22px}
 .schema svg{width:100%;height:auto;display:block}
-.filiere{font-family:var(--m);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bleu);margin-bottom:6px}
+.filiere{font-family:var(--m);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
 .detail{list-style:none;margin:20px 0;border-top:1px solid var(--ligne)}
 .detail li{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--ligne);font-size:.86rem;color:var(--fume)}
 .detail li b{font-family:var(--m);font-weight:600;color:var(--blanc);text-align:right}
 .chiffre{font-family:var(--d);font-size:clamp(2.1rem,5.4vw,3.4rem);line-height:1}
 .chiffre small{display:block;font-family:var(--m);font-size:.66rem;letter-spacing:.14em;color:rgba(247,247,245,.45);text-transform:uppercase;margin-bottom:8px}
 .mention{font-size:.75rem;color:rgba(247,247,245,.4);margin-top:12px;line-height:1.5}
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#0A0B0C;border:0;padding:16px;width:100%;font-family:var(--b);font-weight:700;font-size:1rem;cursor:pointer;margin-top:10px}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#fff;border:0;padding:16px;width:100%;font-family:var(--b);font-weight:700;font-size:1rem;cursor:pointer;margin-top:10px}
 .cta:hover{background:var(--vif);color:#fff}
-.sent{background:var(--bleu);color:#04141d;padding:14px;margin-top:12px;font-size:.87rem;font-weight:600;display:none}
+.sent{background:var(--bleu);color:#fff;padding:14px;margin-top:12px;font-size:.87rem;font-weight:600;display:none}
 .sent.on{display:block}
 
 /* ======== caméra ======== */
@@ -167,21 +183,21 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 .tar{width:100%;border-collapse:collapse;font-size:.94rem}
 .tar td{padding:15px 6px;border-bottom:1px solid var(--ligne)}
 .tar tr:first-child td{border-top:1px solid var(--ligne)}
-.tar td:last-child{text-align:right;font-family:var(--m);font-weight:600;white-space:nowrap;color:var(--orange)}
+.tar td:last-child{text-align:right;font-family:var(--m);font-weight:600;white-space:nowrap;color:var(--bleu2)}
 .tar .z td{color:var(--fume);font-size:.87rem}
 .tar .z td:last-child{color:var(--fume)}
 
 /* ======== zones ======== */
 .villes{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:36px}
 .ville{background:var(--noir);padding:16px 14px;font-size:.9rem;font-weight:500;transition:.2s}
-.ville:hover{background:var(--orange);color:#0A0B0C}
+.ville:hover{background:var(--bleu);color:#fff}
 .ville i{display:block;font-style:normal;font-family:var(--m);font-size:.6rem;letter-spacing:.1em;color:var(--fume);margin-top:3px}
-.ville:hover i{color:rgba(10,11,12,.7)}
+.ville:hover i{color:rgba(255,255,255,.75)}
 
 /* ======== avis ======== */
 .avis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .avis blockquote{background:var(--gris);border:1px solid var(--ligne);padding:26px;display:flex;flex-direction:column;gap:14px}
-.stars{color:var(--orange);letter-spacing:3px}
+.stars{color:var(--orange);letter-spacing:3px;font-size:1rem}
 .avis p{font-size:.93rem;color:rgba(247,247,245,.85)}
 .avis cite{margin-top:auto;font-style:normal;font-family:var(--m);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fume)}
 
@@ -191,8 +207,8 @@ header.solid{background:rgba(10,11,12,.92);backdrop-filter:blur(12px);border-col
 .field input,.field textarea,.field select{width:100%;background:var(--gris2);border:1px solid var(--ligne);color:var(--blanc);padding:13px;font-family:var(--b);font-size:.95rem}
 .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--orange);outline-offset:-1px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.coord{border-left:2px solid var(--orange);padding-left:20px;margin-bottom:24px}
-.coord .mono{color:var(--orange);margin-bottom:4px}
+.coord{border-left:2px solid var(--bleu);padding-left:20px;margin-bottom:24px}
+.coord .mono{color:var(--bleu2);margin-bottom:4px}
 .coord a{font-family:var(--m);font-size:1.15rem;font-weight:600}
 .coord p{color:var(--fume);font-size:.92rem}
 
@@ -200,8 +216,8 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 .fg{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
 /* ======== chat ======== */
-.chat-btn{position:fixed;right:20px;bottom:24px;z-index:80;width:58px;height:58px;border-radius:50%;background:var(--bleu);border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.chat-btn svg{width:26px;height:26px;fill:#04141d}
+.chat-btn{position:fixed;right:20px;bottom:24px;z-index:80;width:58px;height:58px;border-radius:50%;background:var(--bleu);border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 34px rgba(11,140,243,.45)}
+.chat-btn svg{width:26px;height:26px;fill:#fff}
 .chat-btn:after{content:"1";position:absolute;top:-2px;right:-2px;width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font-family:var(--m);font-size:.68rem;display:grid;place-items:center}
 .chat-box{position:fixed;right:20px;bottom:94px;z-index:81;width:min(340px,90vw);background:var(--gris);border:1px solid var(--ligne);display:none;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)}
 .chat-box.on{display:flex}
@@ -212,14 +228,14 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 .chat-body{padding:16px;display:flex;flex-direction:column;gap:10px;max-height:240px;overflow-y:auto}
 .msg{padding:10px 13px;font-size:.86rem;max-width:86%}
 .msg.them{background:var(--gris2)}
-.msg.me{background:var(--orange);color:#0A0B0C;align-self:flex-end;font-weight:500}
+.msg.me{background:var(--bleu);color:#fff;align-self:flex-end;font-weight:500}
 .quick{display:flex;flex-wrap:wrap;gap:6px;padding:12px 16px;border-top:1px solid var(--ligne)}
 .quick button{border:1px solid var(--ligne);background:transparent;color:var(--fume);padding:7px 11px;font-size:.77rem;cursor:pointer;font-family:var(--b)}
 .quick button:hover{border-color:var(--bleu);color:var(--bleu)}
 
 .mobibar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;background:var(--noir);border-top:1px solid var(--ligne)}
 .mobibar a{flex:1;padding:15px 8px;text-align:center;font-weight:700;font-size:.92rem}
-.mobibar a.call{background:var(--orange);color:#0A0B0C}
+.mobibar a.call{background:var(--orange);color:#fff}
 
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -254,7 +270,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#zones">Zones</a></li>
     </ul>
-    <a class="tel" href="tel:0699768521"><span><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>06 99 76 85 21</span></a>
+    <a class="tel" href="tel:0699768521"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.6 8.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.2-.2.5-.3.8-.2.6.2 1.2.3 1.9.3.3 0 .5.2.5.5v1.9c0 .3-.2.5-.5.5-4.9 0-8.9-4-8.9-8.9 0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5 0 .7.1 1.3.3 1.9.1.3 0 .6-.2.8l-1.3 1.2z" fill="currentColor" stroke="none"/></svg>06 99 76 85 21</span></a>
   </nav>
 </header>
 
@@ -287,8 +303,12 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <div class="ph" id="p3">
         <span class="mono">23 h 32</span>
         <div class="big">On est là.</div>
-        <p>Débouchage, curage, inspection caméra et assainissement. Var et Bouches-du-Rhône, 24 h/24.</p>
-        <a class="tel" href="tel:0699768521"><span>06 99 76 85 21</span></a>
+        <p>Débouchage, curage, inspection caméra et assainissement. Var et Bouches-du-Rhône.</p>
+        <div style="display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:24px">
+          <span class="b247"><u>24/24</u><s>7/7</s></span>
+          <a class="tel" href="tel:0699768521" style="font-size:1.15rem;padding:15px 26px"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.6 8.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.2-.2.5-.3.8-.2.6.2 1.2.3 1.9.3.3 0 .5.2.5.5v1.9c0 .3-.2.5-.5.5-4.9 0-8.9-4-8.9-8.9 0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5 0 .7.1 1.3.3 1.9.1.3 0 .6-.2.8l-1.3 1.2z" fill="currentColor" stroke="none"/></svg>06 99 76 85 21</span></a>
+        </div>
+        <div style="margin-top:20px"><span class="tagline"><b>La solution pour vos canalisations</b></span></div>
       </div>
     </div>
 
@@ -296,6 +316,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   </div>
 </section>
 
+<div class="slash"></div>
 <div class="band"><div id="mq1"></div></div>
 
 <section class="sec" style="padding-top:0;padding-bottom:0">
@@ -313,14 +334,14 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
     <div class="rv">
       <div class="head">
         <span class="mono">Curage et hydrocurage</span>
-        <h2>On ne débouche pas.<br><span class="skew" style="color:var(--orange)">On rouvre.</span></h2>
+        <h2>On ne débouche pas.<br><span class="skew" style="color:var(--bleu2)">On rouvre.</span></h2>
       </div>
       <p class="lead">Un coup de furet fait passer l'eau une semaine. Le curage haute pression décolle le tartre, le calcaire et les racines sur toute la longueur, et rend son diamètre d'origine à la canalisation.</p>
-      <ul class="plist">
-        <li><i>01</i><span>Inspection caméra pour localiser le point exact</span></li>
-        <li><i>02</i><span>Passage hydrocureur 150 bar, buse adaptée au diamètre</span></li>
-        <li><i>03</i><span>Coupe-racines si le réseau est envahi</span></li>
-        <li><i>04</i><span>Contrôle vidéo final, vous voyez le résultat</span></li>
+      <ul class="plist check">
+        <li><span>Inspection caméra pour localiser le point exact</span></li>
+        <li><span>Passage hydrocureur 150 bar, buse adaptée au diamètre</span></li>
+        <li><span>Coupe-racines si le réseau est envahi</span></li>
+        <li><span>Contrôle vidéo final, vous voyez le résultat</span></li>
       </ul>
     </div>
     <div class="rv">
@@ -364,11 +385,13 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   </div>
 </section>
 
+<div class="slash"></div>
+
 <!-- ============ 4. CHANTIER ============ -->
 <div class="photo rv" id="ph-chantier">
   <img src="./img/chantier.webp" alt="Installation d'une fosse toutes eaux à la pelle mécanique">
   <div class="over wrap">
-    <span class="mono" style="color:var(--orange)">Assainissement non collectif</span>
+    <span class="mono" style="color:var(--bleu2)">Assainissement non collectif</span>
     <h2 style="max-width:16ch;margin-top:12px">Votre fosse septique,<br>posée dans les règles</h2>
   </div>
 </div>
@@ -506,7 +529,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 <div class="photo rv" id="ph-plage">
   <img src="./img/plage.webp" alt="Le camion Express'Eau en intervention sur le littoral varois">
   <div class="over wrap">
-    <span class="mono" style="color:var(--orange)">Var 83 · Bouches-du-Rhône 13</span>
+    <span class="mono" style="color:var(--bleu2)">Var 83 · Bouches-du-Rhône 13</span>
     <h2 style="margin-top:12px">Du Lavandou<br>à Aix-en-Provence</h2>
   </div>
 </div>
@@ -533,7 +556,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <a class="ville" href="#">Aubagne<i>Zone 3</i></a>
       <a class="ville" href="#">Aix-en-Provence<i>Zone 4</i></a>
       <a class="ville" href="#">Marseille<i>Zone 4</i></a>
-      <a class="ville" href="tel:0699768521" style="background:var(--orange);color:#0A0B0C">Votre commune ?<i style="color:rgba(10,11,12,.7)">Appelez-nous</i></a>
+      <a class="ville" href="tel:0699768521" style="background:var(--bleu);color:#fff">Votre commune ?<i style="color:rgba(255,255,255,.8)">Appelez-nous</i></a>
     </div>
   </div>
 </section>
@@ -543,7 +566,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   <div class="wrap">
     <div class="head rv">
       <span class="mono">Tarifs TTC</span>
-      <h2>Les prix sont<br><span class="skew" style="color:var(--orange)">affichés.</span></h2>
+      <h2>Les prix sont<br><span class="skew" style="color:var(--bleu2)">affichés.</span></h2>
       <p class="lead">Le montant vous est confirmé au téléphone avant le déplacement. Si le chantier se révèle plus lourd sur place, on vous le dit avant de sortir le matériel, pas sur la facture.</p>
     </div>
     <table class="tar rv">
@@ -598,7 +621,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       </div>
       <div class="two">
         <div class="field"><label>Commune</label><input type="text" placeholder="Toulon"></div>
-        <div class="field"><label>Motif</label><select><option>Canalisation bouchée</option><option>Curage de réseau</option><option>Inspection caméra</option><option>Fosse septique</option><option>Travaux de réseau</option></select></div>
+        <div class="field"><label>Motif</label><select><option>Canalisation bouchée</option><option>Curage de réseau</option><option>Inspection caméra</option><option>Fosse septique</option><option>Travaux de réseau</option><option>Station de relevage</option></select></div>
       </div>
       <div class="field"><label>Email</label><input type="email" placeholder="vous@email.fr"></div>
       <div class="field"><label>Ce qui se passe</label><textarea rows="4" placeholder="Depuis quand, quel appareil, est-ce que ça remonte ailleurs dans la maison"></textarea></div>
@@ -615,7 +638,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <p style="margin-top:8px;max-width:46ch">Débouchage, curage, inspection caméra et assainissement non collectif. Var 83 et Bouches-du-Rhône 13. Intervention 24 h/24, 7 j/7.</p>
     </div>
     <div style="text-align:right">
-      <a href="tel:0699768521" style="font-family:var(--m);color:var(--orange);font-size:1.05rem;font-weight:600">06 99 76 85 21</a>
+      <a href="tel:0699768521" style="font-family:var(--m);color:var(--bleu2);font-size:1.05rem;font-weight:600">06 99 76 85 21</a>
       <p style="margin-top:8px">Mentions légales · Instagram · Facebook</p>
     </div>
   </div>
@@ -641,7 +664,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- marquees ---------- */
-const t1="Débouchage <span>·</span> Hydrocurage <span>·</span> Inspection caméra <span>·</span> Fosse septique <span>·</span> Coupe-racines <span>·</span> 24 h/24 <span>·</span> ";
+const t1="Débouchage <span>·</span> Curage <span>·</span> Inspection caméra <span>·</span> Remise en conformité <span>·</span> Fosse et station de relevage <span>·</span> 24/24 7/7 <span>·</span> ";
 const t2="La solution pour vos canalisations <span>·</span> Var 83 <span>·</span> Bouches-du-Rhône 13 <span>·</span> Devis gratuit <span>·</span> ";
 document.getElementById('mq1').innerHTML=t1.repeat(8);
 document.getElementById('mq2').innerHTML=t2.repeat(8);
