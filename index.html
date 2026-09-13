@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=22">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=22">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=22">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -598,7 +598,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
           <li>Étude de sol <b id="d-etude">à prévoir</b></li>
           <li>Durée du chantier <b id="d-duree">2 à 3 jours</b></li>
         </ul>
-        <div class="chiffre"><small>Fourchette indicative · à partir de</small><span id="d-prix">8 990 € à 9 990 €</span></div>
+        <div class="chiffre"><small>Budget indicatif · de 8 990 € à 9 990 €</small><span id="d-prix">8 990 € à 9 390 €</span></div>
         <p class="mention">Estimation indicative, donnée à titre d'information. Le montant exact est arrêté après étude du projet et visite du terrain.</p>
         <button class="cta" id="pdfBtn">Recevoir cette estimation en PDF</button>
         <div class="sent" id="sent">Estimation envoyée. On vous rappelle sous 24 h pour étudier votre projet.</div>
@@ -888,10 +888,10 @@ rng.addEventListener('input',setX); setX();
 /* ---------- simulateur ---------- */
 const state={projet:'neuf',pieces:'4',terrain:'grand',sol:'drainant',acces:'ok',etude:'non'};
 const FIL={
- epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[8990,9990],g:'g-epandage',duree:"2 à 3 jours"},
- sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[10900,13900],g:'g-sable',duree:"3 à 4 jours"},
- micro:{t:"Microstation d'épuration agréée",d:"Peu de terrain disponible. Tout est traité dans une seule cuve, avec un contrat d'entretien annuel.",base:[10400,13400],g:'g-micro',duree:"2 jours"},
- compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[11400,14400],g:'g-compact',duree:"2 à 3 jours"}
+ epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[8990,9390],g:'g-epandage',duree:"2 à 3 jours"},
+ sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[9200,9790],g:'g-sable',duree:"3 à 4 jours"},
+ micro:{t:"Microstation d'épuration agréée",d:"Peu de terrain disponible. Tout est traité dans une seule cuve, avec un contrat d'entretien annuel.",base:[9100,9690],g:'g-micro',duree:"2 jours"},
+ compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[9300,9890],g:'g-compact',duree:"2 à 3 jours"}
 };
 const eur=n=>(Math.round(n/10)*10).toLocaleString('fr-FR')+' €';
 function choisir(){const{terrain,sol}=state;
@@ -901,11 +901,13 @@ function choisir(){const{terrain,sol}=state;
   return terrain==='grand'?'epandage':'compact';}
 function maj(){
   const f=FIL[choisir()], eh=Math.max(3,parseInt(state.pieces,10));
-  const cEH=1+(eh-4)*0.075, cA=state.acces==='ok'?1:state.acces==='etroit'?1.15:1.32;
-  let ex=0; if(state.projet==='remplacement')ex+=1500; if(state.projet==='spanc')ex+=800; if(state.etude==='non')ex+=590;
+  const cEH=1+(eh-4)*0.012, cA=state.acces==='ok'?1:state.acces==='etroit'?1.02:1.04;
+  let ex=0; if(state.projet==='remplacement')ex+=150; if(state.projet==='spanc')ex+=90; if(state.etude==='non')ex+=90;
   document.getElementById('f-titre').textContent=f.t;
   document.getElementById('f-desc').textContent=f.d;
-  const bas=Math.max(8990,f.base[0]*cEH*cA+ex), haut=Math.max(9990,f.base[1]*cEH*cA+ex);
+  const MIN=8990, MAX=9990;
+  const cl=v=>Math.min(MAX,Math.max(MIN,v));
+  const bas=cl(f.base[0]*cEH*cA+ex), haut=Math.max(bas,cl(f.base[1]*cEH*cA+ex));
   document.getElementById('d-prix').textContent=eur(bas)+' à '+eur(haut);
   document.getElementById('d-eh').textContent=eh+' équivalents-habitants';
   document.getElementById('d-volume').textContent=eh<=4?'3 000 L':eh<=5?'4 000 L':eh<=6?'5 000 L':'6 000 L';
