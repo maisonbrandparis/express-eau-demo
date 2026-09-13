@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=14">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=14">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=14">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -269,6 +269,9 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ligne);border:1px solid var(--ligne)}
 .duo .shot{aspect-ratio:4/5}
 
+.banner{width:100%;overflow:hidden;background:var(--noir);border-block:1px solid var(--ligne)}
+.banner img{width:100%;height:auto;display:block}
+
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 
@@ -280,6 +283,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   .villes{grid-template-columns:repeat(2,1fr)}
   .gal{grid-template-columns:1fr 1fr}
   .gal .shot:nth-child(n+7){display:none}
+  .banner img{min-height:150px;object-fit:cover;object-position:70% center}
   .mobibar{display:flex}
   .vanwrap{top:66%;width:min(680px,96vw)}
   .photo{height:auto;aspect-ratio:16/10}
@@ -609,6 +613,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <figure class="shot"><img src="./img/g-fosse.webp" alt="Fosse toutes eaux polyéthylène posée et raccordée en tranchée devant une villa" loading="lazy"><figcaption><b>Assainissement</b><span>Fosse toutes eaux posée et raccordée</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-cuve.webp" alt="Cuve béton Eloy Water descendue à la grue sur le chantier" loading="lazy"><figcaption><b>Levage</b><span>Cuve béton descendue à la grue</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-epandage.webp" alt="Tranchées d'épandage avec graviers et géotextile avant remblaiement" loading="lazy"><figcaption><b>Épandage</b><span>Tranchées drainantes avant remblai</span></figcaption></figure>
+      <figure class="shot"><img src="./img/drone.webp" alt="Chantier de terrassement vu du ciel avec la mini-pelle en action" loading="lazy"><figcaption><b>Terrassement</b><span>Tranchée en cours, vue du ciel</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-tranchee.webp" alt="Tranchée et pose de canalisation le long d'une maison" loading="lazy"><figcaption><b>Réseau</b><span>Création de réseau enterré</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-flotteurs.webp" alt="Flotteurs de niveau et vannes dans un poste de relevage" loading="lazy"><figcaption><b>Relevage</b><span>Flotteurs et vannes de refoulement</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-poste.webp" alt="Poste de relevage nettoyé avec clapets et pompes immergées" loading="lazy"><figcaption><b>Entretien</b><span>Poste nettoyé et remis en service</span></figcaption></figure>
@@ -618,12 +623,8 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 </section>
 
 <!-- ============ 7. ZONES ============ -->
-<div class="photo rv" id="ph-plage">
-  <img src="./img/drone.webp" alt="Chantier de terrassement vu du ciel, mini-pelle en action">
-  <div class="over wrap">
-    <span class="mono" style="color:var(--bleu2)">Var 83 · Bouches-du-Rhône 13</span>
-    <h2 style="margin-top:12px">Du Lavandou<br>à Aix-en-Provence</h2>
-  </div>
+<div class="banner rv">
+  <img src="./img/zones.webp" alt="Nos zones d'intervention dans le Var et les Bouches-du-Rhône, le camion Express'Eau sur la corniche">
 </div>
 
 <section class="sec" id="zones" style="padding-top:clamp(40px,6vw,70px)">
