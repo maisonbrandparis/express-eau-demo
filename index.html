@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=24">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=24">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=23">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=24">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -596,7 +596,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
           <li>Capacité de traitement <b id="d-eh">4 équivalents-habitants</b></li>
           <li>Terrassement et évacuation <b id="d-terrass">inclus</b></li>
           <li>Étude de sol <b id="d-etude">à prévoir</b></li>
-          <li>Durée du chantier <b id="d-duree">2 à 3 jours</b></li>
+          <li>Durée du chantier <b id="d-duree">5 à 7 jours</b></li>
         </ul>
         <div class="chiffre"><small>Budget indicatif · de 8 990 € à 9 990 €</small><span id="d-prix">8 990 € à 9 390 €</span></div>
         <p class="mention">Estimation indicative, donnée à titre d'information. Le montant exact est arrêté après étude du projet et visite du terrain.</p>
@@ -888,10 +888,10 @@ rng.addEventListener('input',setX); setX();
 /* ---------- simulateur ---------- */
 const state={projet:'neuf',pieces:'4',terrain:'grand',sol:'drainant',acces:'ok',etude:'non'};
 const FIL={
- epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[8990,9390],g:'g-epandage',duree:"2 à 3 jours"},
- sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[9200,9790],g:'g-sable',duree:"3 à 4 jours"},
+ epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[8990,9390],g:'g-epandage',duree:"5 à 7 jours"},
+ sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[9200,9790],g:'g-sable',duree:"5 à 7 jours"},
  micro:{t:"Microstation d'épuration agréée",d:"Peu de terrain disponible. Tout est traité dans une seule cuve, avec un contrat d'entretien annuel.",base:[9100,9690],g:'g-micro',duree:"2 jours"},
- compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[9300,9890],g:'g-compact',duree:"2 à 3 jours"}
+ compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[9300,9890],g:'g-compact',duree:"5 à 7 jours"}
 };
 const eur=n=>(Math.round(n/10)*10).toLocaleString('fr-FR')+' €';
 function choisir(){const{terrain,sol}=state;
