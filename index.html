@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=10">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=10">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=11">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=11">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=10">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=11">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -279,9 +279,12 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   .stats{grid-template-columns:1fr 1fr}
   .villes{grid-template-columns:repeat(2,1fr)}
   .gal{grid-template-columns:1fr 1fr}
-  .gal .shot:nth-child(n+5){display:none}
+  .gal .shot:nth-child(n+7){display:none}
   .mobibar{display:flex}
   .vanwrap{top:66%;width:min(680px,96vw)}
+  .photo{height:auto;aspect-ratio:16/10}
+  .photo img{inset:-6% 0;height:112%}
+  .photo .over{padding:20px 6vw 24px}
   .phases{top:7vh;padding:0 6vw}
   .ph .big{font-size:clamp(2.1rem,9.6vw,3.4rem)}
   .ph p{font-size:.95rem}
@@ -366,7 +369,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   <div class="stats">
     <div class="stat rv"><b data-c="45">0</b><span>minutes de délai moyen en zone 1</span></div>
     <div class="stat rv"><b data-c="19">0</b><span>communes couvertes, du Lavandou à Aix</span></div>
-    <div class="stat rv"><b data-c="150">0</b><span>bars de pression à l'hydrocureur</span></div>
+    <div class="stat rv"><b data-c="300">0</b><span>bars de pression à l'hydrocureur</span></div>
     <div class="stat rv"><b data-c="149" data-suf=" €">0</b><span>premier prix, annoncé avant de venir</span></div>
   </div>
 </section>
@@ -376,13 +379,13 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   <div class="wrap split">
     <div class="rv">
       <div class="head">
-        <span class="mono">Curage et hydrocurage</span>
-        <h2>On ne débouche pas.<br><span class="skew" style="color:var(--bleu2)">On rouvre.</span></h2>
+        <span class="mono">Débouchage et curage</span>
+        <h2>Débouchage par<br><span class="skew" style="color:var(--bleu2)">camion hydrocureur</span></h2>
       </div>
       <p class="lead">Un coup de furet fait passer l'eau une semaine. Le curage haute pression décolle le tartre, le calcaire et les racines sur toute la longueur, et rend son diamètre d'origine à la canalisation.</p>
       <ul class="plist check">
         <li><span>Inspection caméra pour localiser le point exact</span></li>
-        <li><span>Passage hydrocureur 150 bar, buse adaptée au diamètre</span></li>
+        <li><span>Passage hydrocureur 300 bar, buse adaptée au diamètre</span></li>
         <li><span>Coupe-racines si le réseau est envahi</span></li>
         <li><span>Contrôle vidéo final, vous voyez le résultat</span></li>
       </ul>
@@ -432,7 +435,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 
 <!-- ============ 4. CHANTIER ============ -->
 <div class="photo rv" id="ph-chantier">
-  <img src="./img/chantier.webp" alt="Mise en place d'une fosse toutes eaux béton Eloy Water à la grue">
+  <img src="./img/chantier.webp" alt="Fosse toutes eaux posée en tranchée avec ses deux tampons de visite">
   <div class="over wrap">
     <span class="mono" style="color:var(--bleu2)">Assainissement non collectif</span>
     <h2 style="max-width:16ch;margin-top:12px">Votre fosse septique,<br>posée dans les règles</h2>
@@ -445,8 +448,8 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   <div class="wrap">
     <div class="head rv">
       <span class="mono">Simulateur d'installation</span>
-      <h2>Chiffrez votre<br>installation maintenant</h2>
-      <p class="lead">Six questions. On vous indique la filière adaptée à votre terrain, le volume de cuve et la fourchette de prix, terrassement compris.</p>
+      <h2>Situez le budget<br>de votre installation</h2>
+      <p class="lead">Six questions pour situer votre projet. On vous indique la filière adaptée à votre terrain, le volume de cuve et un ordre de grandeur de budget. Les montants affichés sont indicatifs, ils ne remplacent pas un devis.</p>
     </div>
     <div class="simgrid rv">
       <div class="panel">
@@ -531,20 +534,20 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
             </g>
           </svg>
         </div>
-        <p class="filiere" id="f-label">Filière recommandée</p>
+        <p class="filiere" id="f-label">Filière recommandée · budget indicatif</p>
         <h3 id="f-titre">Fosse toutes eaux et épandage souterrain</h3>
         <p style="color:var(--fume);font-size:.9rem;margin-top:8px" id="f-desc">Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.</p>
         <ul class="detail">
           <li>Volume de la fosse <b id="d-volume">3 000 L</b></li>
           <li>Capacité de traitement <b id="d-eh">4 équivalents-habitants</b></li>
           <li>Terrassement et évacuation <b id="d-terrass">inclus</b></li>
-          <li>Étude de sol <b id="d-etude">450 €</b></li>
+          <li>Étude de sol <b id="d-etude">à prévoir</b></li>
           <li>Durée du chantier <b id="d-duree">2 à 3 jours</b></li>
         </ul>
-        <div class="chiffre"><small>Estimation tout compris</small><span id="d-prix">7 200 € à 9 400 €</span></div>
-        <p class="mention">Fourchette indicative TTC. Le devis ferme est établi après visite du terrain, elle est gratuite.</p>
-        <button class="cta" id="pdfBtn">Recevoir ce devis en PDF</button>
-        <div class="sent" id="sent">Devis envoyé. On vous rappelle sous 24 h pour caler la visite.</div>
+        <div class="chiffre"><small>Fourchette indicative · à partir de</small><span id="d-prix">10 500 € à 13 500 €</span></div>
+        <p class="mention">Estimation indicative, donnée à titre d'information. Le montant exact est arrêté après étude du projet et visite du terrain.</p>
+        <button class="cta" id="pdfBtn">Recevoir cette estimation en PDF</button>
+        <div class="sent" id="sent">Estimation envoyée. On vous rappelle sous 24 h pour étudier votre projet.</div>
       </div>
     </div>
   </div>
@@ -604,6 +607,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
     </div>
     <div class="gal rv">
       <figure class="shot"><img src="./img/g-fosse.webp" alt="Fosse toutes eaux polyéthylène posée et raccordée en tranchée devant une villa" loading="lazy"><figcaption><b>Assainissement</b><span>Fosse toutes eaux posée et raccordée</span></figcaption></figure>
+      <figure class="shot"><img src="./img/g-cuve.webp" alt="Cuve béton Eloy Water descendue à la grue sur le chantier" loading="lazy"><figcaption><b>Levage</b><span>Cuve béton descendue à la grue</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-epandage.webp" alt="Tranchées d'épandage avec graviers et géotextile avant remblaiement" loading="lazy"><figcaption><b>Épandage</b><span>Tranchées drainantes avant remblai</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-tranchee.webp" alt="Tranchée et pose de canalisation le long d'une maison" loading="lazy"><figcaption><b>Réseau</b><span>Création de réseau enterré</span></figcaption></figure>
       <figure class="shot"><img src="./img/g-flotteurs.webp" alt="Flotteurs de niveau et vannes dans un poste de relevage" loading="lazy"><figcaption><b>Relevage</b><span>Flotteurs et vannes de refoulement</span></figcaption></figure>
@@ -745,7 +749,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 
 <div class="mobibar">
   <a class="call" href="tel:0699768521">Appeler maintenant</a>
-  <a href="#devis">Devis fosse</a>
+  <a href="#devis">Estimation fosse</a>
 </div>
 
 <script>
@@ -753,7 +757,7 @@ const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- marquees ---------- */
 const t1="Débouchage <span>·</span> Curage <span>·</span> Inspection caméra <span>·</span> Remise en conformité <span>·</span> Fosse et station de relevage <span>·</span> 24/24 7/7 <span>·</span> ";
-const t2="La solution pour vos canalisations <span>·</span> Var 83 <span>·</span> Bouches-du-Rhône 13 <span>·</span> Devis gratuit <span>·</span> ";
+const t2="La solution pour vos canalisations <span>·</span> Var 83 <span>·</span> Bouches-du-Rhône 13 <span>·</span> Intervention 24/24 <span>·</span> ";
 document.getElementById('mq1').innerHTML=t1.repeat(8);
 document.getElementById('mq2').innerHTML=t2.repeat(8);
 
@@ -824,12 +828,12 @@ rng.addEventListener('input',setX); setX();
 /* ---------- simulateur ---------- */
 const state={projet:'neuf',pieces:'4',terrain:'grand',sol:'drainant',acces:'ok',etude:'non'};
 const FIL={
- epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[6500,8600],g:'g-epandage',duree:"2 à 3 jours"},
- sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[8200,11000],g:'g-sable',duree:"3 à 4 jours"},
- micro:{t:"Microstation d'épuration agréée",d:"Peu de terrain disponible. Tout est traité dans une seule cuve, avec un contrat d'entretien annuel.",base:[7800,10600],g:'g-micro',duree:"2 jours"},
- compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[8400,11800],g:'g-compact',duree:"2 à 3 jours"}
+ epandage:{t:"Fosse toutes eaux et épandage souterrain",d:"Votre terrain absorbe l'eau et la surface est suffisante. C'est la solution la plus simple et la moins chère à entretenir.",base:[10000,13000],g:'g-epandage',duree:"2 à 3 jours"},
+ sable:{t:"Fosse toutes eaux et filtre à sable drainé",d:"Le sol ne laisse pas assez passer l'eau. Le filtre à sable traite les eaux avant rejet vers l'exutoire autorisé.",base:[12000,16000],g:'g-sable',duree:"3 à 4 jours"},
+ micro:{t:"Microstation d'épuration agréée",d:"Peu de terrain disponible. Tout est traité dans une seule cuve, avec un contrat d'entretien annuel.",base:[11000,15000],g:'g-micro',duree:"2 jours"},
+ compact:{t:"Fosse toutes eaux et filtre compact coco",d:"Compromis entre emprise au sol et entretien. Le massif filtrant remplace l'épandage sur une surface réduite.",base:[12500,16500],g:'g-compact',duree:"2 à 3 jours"}
 };
-const eur=n=>(Math.round(n/50)*50).toLocaleString('fr-FR')+' €';
+const eur=n=>(Math.round(n/500)*500).toLocaleString('fr-FR')+' €';
 function choisir(){const{terrain,sol}=state;
   if(terrain==='petit')return'micro';
   if(sol==='argileux')return terrain==='grand'?'sable':'compact';
@@ -838,18 +842,19 @@ function choisir(){const{terrain,sol}=state;
 function maj(){
   const f=FIL[choisir()], eh=Math.max(3,parseInt(state.pieces,10));
   const cEH=1+(eh-4)*0.075, cA=state.acces==='ok'?1:state.acces==='etroit'?1.15:1.32;
-  let ex=0; if(state.projet==='remplacement')ex+=1400; if(state.projet==='spanc')ex+=600; if(state.etude==='non')ex+=450;
+  let ex=0; if(state.projet==='remplacement')ex+=2000; if(state.projet==='spanc')ex+=900; if(state.etude==='non')ex+=600;
   document.getElementById('f-titre').textContent=f.t;
   document.getElementById('f-desc').textContent=f.d;
-  document.getElementById('d-prix').textContent=eur(f.base[0]*cEH*cA+ex)+' à '+eur(f.base[1]*cEH*cA+ex);
+  const bas=Math.max(10000,f.base[0]*cEH*cA+ex), haut=Math.max(14000,f.base[1]*cEH*cA+ex);
+  document.getElementById('d-prix').textContent=eur(bas)+' à '+eur(haut);
   document.getElementById('d-eh').textContent=eh+' équivalents-habitants';
   document.getElementById('d-volume').textContent=eh<=4?'3 000 L':eh<=5?'4 000 L':eh<=6?'5 000 L':'6 000 L';
-  document.getElementById('d-etude').textContent=state.etude==='oui'?'déjà fournie':'450 €';
+  document.getElementById('d-etude').textContent=state.etude==='oui'?'déjà fournie':'à prévoir';
   document.getElementById('d-duree').textContent=f.duree;
   document.getElementById('d-terrass').textContent=state.acces==='dur'?'mini-pelle, accès difficile':'inclus';
   ['g-epandage','g-sable','g-micro','g-compact'].forEach(id=>document.getElementById(id).style.display=(id===f.g)?'':'none');
   document.getElementById('sent').classList.remove('on');
-  document.getElementById('pdfBtn').textContent='Recevoir ce devis en PDF';
+  document.getElementById('pdfBtn').textContent='Recevoir cette estimation en PDF';
 }
 document.querySelectorAll('.opts').forEach(g=>g.addEventListener('click',e=>{
   const b=e.target.closest('.opt'); if(!b)return;
@@ -857,7 +862,7 @@ document.querySelectorAll('.opts').forEach(g=>g.addEventListener('click',e=>{
   b.setAttribute('aria-pressed','true'); state[g.dataset.key]=b.dataset.val; maj();
 }));
 maj();
-document.getElementById('pdfBtn').addEventListener('click',function(){this.textContent='Devis envoyé';document.getElementById('sent').classList.add('on');});
+document.getElementById('pdfBtn').addEventListener('click',function(){this.textContent='Estimation envoyée';document.getElementById('sent').classList.add('on');});
 document.getElementById('ctc').addEventListener('click',function(){this.textContent='Demande envoyée';document.getElementById('ctcs').classList.add('on');});
 
 /* ---------- chat ---------- */
@@ -866,7 +871,7 @@ document.getElementById('chatBtn').addEventListener('click',()=>box.classList.to
 const REP={
  "Ça remonte dans la douche":"Si ça remonte à la douche et aux WC, le bouchon est sur la colonne principale. Il faut l'hydrocureur. Vous êtes sur quelle commune ?",
  "Combien pour un débouchage ?":"149 € en manuel, 204 € à l'hydrocureur, plus le déplacement à partir de 40 € en zone 1. Le prix est confirmé avant qu'on parte.",
- "Devis fosse septique":"Passez par le simulateur, vous aurez une fourchette en deux minutes. La visite du terrain est ensuite gratuite."
+ "Devis fosse septique":"Passez par le simulateur, vous aurez une fourchette indicative en deux minutes. On vous rappelle ensuite pour étudier votre projet."
 };
 document.getElementById('quick').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b)return;
