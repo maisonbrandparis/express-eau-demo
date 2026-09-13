@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=19">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=19">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=20">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=20">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=19">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=20">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,8 +59,7 @@ h3{font-size:clamp(1.1rem,2.1vw,1.5rem);line-height:1.05}
 
 /* ======== header ======== */
 header{position:fixed;top:0;left:0;right:0;z-index:70;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-header{background:rgba(5,8,12,.86);backdrop-filter:blur(10px)}
-header.solid{background:rgba(5,8,12,.95);border-color:var(--ligne)}
+header.solid{background:rgba(5,8,12,.94);backdrop-filter:blur(12px);border-color:var(--ligne)}
 .nav{display:flex;align-items:center;gap:26px;height:68px}
 .logo{font-family:var(--d);font-size:1.25rem;line-height:.85;transform:skewX(-8deg)}
 .logo i{color:var(--bleu);font-style:normal}
@@ -87,7 +86,7 @@ header.solid{background:rgba(5,8,12,.95);border-color:var(--ligne)}
 .slash:after{top:38px;height:12px;background:linear-gradient(90deg,transparent,var(--orange) 35%,var(--vif) 60%,transparent);opacity:.9}
 
 /* ======== 1. arrivée ======== */
-#arrivee{height:260vh;position:relative}
+#arrivee{height:320vh;position:relative}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:
    radial-gradient(120% 80% at 50% 100%,#0d2135 0%,#05080C 64%)}
 .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 18%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 70% 12%,rgba(255,255,255,.25),transparent),radial-gradient(1px 1px at 44% 26%,rgba(255,255,255,.18),transparent);opacity:.8}
@@ -336,7 +335,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   .scrollhint{bottom:72px}
   .chat-btn{bottom:76px}.chat-box{bottom:146px}
   footer{padding-bottom:96px}
-  #arrivee{height:230vh}
+  #arrivee{height:280vh}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -363,6 +362,50 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 </header>
 
 
+
+<!-- ============ SCENE : L'ARRIVEE ============ -->
+<section id="arrivee">
+  <div class="stage" id="stage">
+    <div class="stars"></div>
+    <div class="road"></div>
+    <div class="halo" id="halo"></div>
+    <div class="beams" id="beams"></div>
+    <div class="speed" id="speed">
+      <i style="top:22%;width:24vw;left:70%"></i>
+      <i style="top:38%;width:16vw;left:80%;animation-delay:.18s"></i>
+      <i style="top:64%;width:30vw;left:62%;animation-delay:.32s"></i>
+      <i style="top:78%;width:20vw;left:74%;animation-delay:.09s"></i>
+    </div>
+    <div class="vanwrap" id="van"><img src="./img/van.webp" alt="Camion Express'Eau Assainissement"></div>
+
+    <div class="phases">
+      <div class="ph" id="p1">
+        <span class="mono">Dimanche · 22 h 47</span>
+        <div class="big">L'eau remonte<br>dans la douche.</div>
+        <p>Personne ne répond. Les répondeurs, eux, répondent tous.</p>
+      </div>
+      <div class="ph" id="p2">
+        <span class="mono">22 h 49</span>
+        <div class="big">Vous appelez.<br>On décroche.</div>
+        <p>Un artisan au bout du fil, pas une plateforme. Diagnostic et prix annoncés tout de suite.</p>
+      </div>
+      <div class="ph" id="p3">
+        <span class="mono">23 h 32</span>
+        <div class="big">On est là.</div>
+        <p>Débouchage, curage, inspection caméra et assainissement. Var et Bouches-du-Rhône.</p>
+        <div style="display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:24px">
+          <span class="b247"><u>24/24</u><s>7/7</s></span>
+          <a class="tel" href="tel:0699768521" style="font-size:1.15rem;padding:15px 26px"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.6 8.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.2-.2.5-.3.8-.2.6.2 1.2.3 1.9.3.3 0 .5.2.5.5v1.9c0 .3-.2.5-.5.5-4.9 0-8.9-4-8.9-8.9 0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5 0 .7.1 1.3.3 1.9.1.3 0 .6-.2.8l-1.3 1.2z" fill="currentColor" stroke="none"/></svg>06 99 76 85 21</span></a>
+        </div>
+        <div style="margin-top:20px"><span class="tagline"><b>La solution pour vos canalisations</b></span></div>
+      </div>
+    </div>
+
+    <div class="scrollhint" id="hint"><span class="mono">Faites défiler</span><b></b></div>
+
+    
+  </div>
+</section>
 
 <div id="top"></div>
 <div class="band"><div id="mq1"></div></div>
@@ -700,47 +743,6 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   </div>
 </section>
 
-<!-- ============ SCENE : L'ARRIVEE ============ -->
-<section id="arrivee">
-  <div class="stage" id="stage">
-    <div class="stars"></div>
-    <div class="road"></div>
-    <div class="halo" id="halo"></div>
-    <div class="beams" id="beams"></div>
-    <div class="speed" id="speed">
-      <i style="top:22%;width:24vw;left:70%"></i>
-      <i style="top:38%;width:16vw;left:80%;animation-delay:.18s"></i>
-      <i style="top:64%;width:30vw;left:62%;animation-delay:.32s"></i>
-      <i style="top:78%;width:20vw;left:74%;animation-delay:.09s"></i>
-    </div>
-    <div class="vanwrap" id="van"><img src="./img/van.webp" alt="Camion Express'Eau Assainissement"></div>
-
-    <div class="phases">
-      <div class="ph" id="p1">
-        <span class="mono">Dimanche · 22 h 47</span>
-        <div class="big">L'eau remonte<br>dans la douche.</div>
-        <p>Personne ne répond. Les répondeurs, eux, répondent tous.</p>
-      </div>
-      <div class="ph" id="p2">
-        <span class="mono">22 h 49</span>
-        <div class="big">Vous appelez.<br>On décroche.</div>
-        <p>Un artisan au bout du fil, pas une plateforme. Diagnostic et prix annoncés tout de suite.</p>
-      </div>
-      <div class="ph" id="p3">
-        <span class="mono">23 h 32</span>
-        <div class="big">On est là.</div>
-        <p>Débouchage, curage, inspection caméra et assainissement. Var et Bouches-du-Rhône.</p>
-        <div style="display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:24px">
-          <span class="b247"><u>24/24</u><s>7/7</s></span>
-          <a class="tel" href="tel:0699768521" style="font-size:1.15rem;padding:15px 26px"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.6 8.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.2-.2.5-.3.8-.2.6.2 1.2.3 1.9.3.3 0 .5.2.5.5v1.9c0 .3-.2.5-.5.5-4.9 0-8.9-4-8.9-8.9 0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5 0 .7.1 1.3.3 1.9.1.3 0 .6-.2.8l-1.3 1.2z" fill="currentColor" stroke="none"/></svg>06 99 76 85 21</span></a>
-        </div>
-        <div style="margin-top:20px"><span class="tagline"><b>La solution pour vos canalisations</b></span></div>
-      </div>
-    </div>
-
-    
-  </div>
-</section>
 
 <!-- ============ 10. CONTACT ============ -->
 <section class="sec" id="contact" style="background:var(--gris)">
@@ -845,6 +847,7 @@ function frame(){
       im.style.transform='translateY('+(q*-8).toFixed(2)+'%)';
     }
   });
+  if(hint) hint.style.opacity=(1-p*3).toFixed(2);
   hd.classList.toggle('solid',window.scrollY>60);
 }
 function onScroll(){ if(!tick&&!RM){tick=true;requestAnimationFrame(frame);} }
