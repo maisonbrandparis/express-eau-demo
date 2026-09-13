@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=16">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=16">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=15">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=16">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +33,7 @@
   --vif:#FF9226;
   --bleu:#0B8CF3;
   --bleu2:#4FB4FF;
+  --or:#D3B169;
   --noir:#05080C;
   --gris:#0B1119;
   --gris2:#121A24;
@@ -269,8 +270,34 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ligne);border:1px solid var(--ligne)}
 .duo .shot{aspect-ratio:4/5}
 
-.banner{width:100%;overflow:hidden;background:var(--noir);border-block:1px solid var(--ligne)}
-.banner img{width:100%;height:auto;display:block}
+/* ======== zones d'intervention, maquette client ======== */
+.zonesec{position:relative;overflow:hidden;background:var(--noir);isolation:isolate}
+.zonesec>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center;z-index:-2}
+.zonesec:before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(5,8,12,.94) 0%,rgba(5,8,12,.80) 34%,rgba(5,8,12,.22) 62%,rgba(5,8,12,.30) 100%)}
+.zonesec .inner{padding:clamp(34px,5vw,64px) 0 0}
+.zeyebrow{display:flex;align-items:center;gap:16px;font-family:var(--m);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,248,250,.75);margin-bottom:14px}
+.zeyebrow i{display:block;width:clamp(60px,10vw,150px);height:2px;background:var(--or)}
+.zonesec h2{font-size:clamp(2.1rem,5.6vw,4.2rem);line-height:.96}
+.zonesec h2 em{font-style:normal;color:var(--or);display:block}
+.zonesec .ztxt{max-width:44ch;color:rgba(245,248,250,.88);margin-top:18px;font-size:1.02rem}
+.zfeat{display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,52px);margin:30px 0 34px}
+.zfeat div{display:flex;align-items:center;gap:12px;font-size:.92rem;line-height:1.25}
+.zfeat svg{width:26px;height:26px;stroke:var(--or);fill:none;stroke-width:1.5;flex:none}
+.zfeat b{display:block;font-weight:500}
+.zfeat span{color:rgba(245,248,250,.72);font-size:.88rem}
+.villes{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(245,248,250,.16);
+  border:1px solid rgba(245,248,250,.16);border-bottom:0;margin-top:0}
+.ville{background:rgba(5,8,12,.86);padding:17px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  font-size:.93rem;font-weight:500;transition:background .22s}
+.ville b{font-weight:500;display:block}
+.ville i{display:block;font-style:normal;font-family:var(--b);font-size:.82rem;color:var(--or);margin-top:2px}
+.ville:after{content:"→";color:var(--or);font-size:1rem;opacity:.9}
+.ville:hover{background:rgba(211,177,105,.16)}
+.ville.last{background:var(--or);color:#141008}
+.ville.last i{color:rgba(20,16,8,.75)}
+.ville.last:after{color:#141008}
+.ville.last:hover{background:#e2c078}
 
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -281,6 +308,12 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   .split,.simgrid,.avis{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
   .villes{grid-template-columns:repeat(2,1fr)}
+  .zonesec>img{object-position:66% center}
+  .zonesec:before{background:linear-gradient(180deg,rgba(5,8,12,.92) 0%,rgba(5,8,12,.72) 42%,rgba(5,8,12,.90) 100%)}
+  .zonesec .inner{padding-top:34px}
+  .ville{padding:14px 13px;font-size:.87rem}
+  .zfeat{gap:16px;margin:24px 0 26px}
+  .zfeat div{width:100%}
   .gal{grid-template-columns:1fr 1fr}
   .gal .shot:nth-child(n+7){display:none}
   .banner img{min-height:150px;object-fit:cover;object-position:70% center}
@@ -623,33 +656,40 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 </section>
 
 <!-- ============ 7. ZONES ============ -->
-<div class="banner rv">
-  <img src="./img/zones.webp" alt="Nos zones d'intervention dans le Var et les Bouches-du-Rhône, le camion Express'Eau sur la corniche">
-</div>
-
-<section class="sec" id="zones" style="padding-top:clamp(40px,6vw,70px)">
-  <div class="wrap">
+<section class="zonesec" id="zones">
+  <img src="./img/zones-bg.webp" alt="Le camion Express'Eau sur la corniche, face à la rade et aux îles">
+  <div class="wrap inner">
+    <div class="rv">
+      <p class="zeyebrow">Var 83 · Bouches-du-Rhône 13 <i></i></p>
+      <h2>Nos zones<em>d'intervention</em></h2>
+      <p class="ztxt">Intervention rapide dans tout le Var et les Bouches-du-Rhône pour vos besoins en assainissement.</p>
+      <div class="zfeat">
+        <div><svg viewBox="0 0 24 24"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Intervention</b>rapide</span></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span><b>Disponible</b>24 h/24 · 7 j/7</span></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 6.4a3.2 3.2 0 0 1 0 5.2M18 19c0-2.4-1-4-2.6-4.6"/></svg><span><b>Particuliers</b>&amp; professionnels</span></div>
+      </div>
+    </div>
     <div class="villes rv">
-      <a class="ville" href="#">La Seyne-sur-Mer<i>Zone 1</i></a>
-      <a class="ville" href="#">Six-Fours-les-Plages<i>Zone 1</i></a>
-      <a class="ville" href="#">Ollioules<i>Zone 1</i></a>
-      <a class="ville" href="#">Toulon<i>Zone 1</i></a>
-      <a class="ville" href="#">Saint-Mandrier<i>Zone 1</i></a>
-      <a class="ville" href="#">Bandol<i>Zone 2</i></a>
-      <a class="ville" href="#">Sanary-sur-Mer<i>Zone 2</i></a>
-      <a class="ville" href="#">Saint-Cyr-sur-Mer<i>Zone 2</i></a>
-      <a class="ville" href="#">Le Beausset<i>Zone 2</i></a>
-      <a class="ville" href="#">La Ciotat<i>Zone 2</i></a>
-      <a class="ville" href="#">Hyères<i>Zone 2</i></a>
-      <a class="ville" href="#">Le Lavandou<i>Zone 3</i></a>
-      <a class="ville" href="#">Sainte-Maxime<i>Zone 3</i></a>
-      <a class="ville" href="#">Draguignan<i>Zone 3</i></a>
-      <a class="ville" href="#">Brignoles<i>Zone 3</i></a>
-      <a class="ville" href="#">Saint-Maximin<i>Zone 3</i></a>
-      <a class="ville" href="#">Aubagne<i>Zone 3</i></a>
-      <a class="ville" href="#">Aix-en-Provence<i>Zone 4</i></a>
-      <a class="ville" href="#">Marseille<i>Zone 4</i></a>
-      <a class="ville" href="tel:0699768521" style="background:var(--bleu);color:#fff">Votre commune ?<i style="color:rgba(255,255,255,.8)">Appelez-nous</i></a>
+        <a class="ville" href="#contact"><span><b>La Seyne-sur-Mer</b><i>Zone 1</i></span></a>
+        <a class="ville" href="#contact"><span><b>Six-Fours-les-Plages</b><i>Zone 1</i></span></a>
+        <a class="ville" href="#contact"><span><b>Ollioules</b><i>Zone 1</i></span></a>
+        <a class="ville" href="#contact"><span><b>Toulon</b><i>Zone 1</i></span></a>
+        <a class="ville" href="#contact"><span><b>Saint-Mandrier</b><i>Zone 1</i></span></a>
+        <a class="ville" href="#contact"><span><b>Bandol</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>Sanary-sur-Mer</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>Saint-Cyr-sur-Mer</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>Le Beausset</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>La Ciotat</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>Hyères</b><i>Zone 2</i></span></a>
+        <a class="ville" href="#contact"><span><b>Le Lavandou</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Sainte-Maxime</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Draguignan</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Brignoles</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Saint-Maximin</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Aubagne</b><i>Zone 3</i></span></a>
+        <a class="ville" href="#contact"><span><b>Aix-en-Provence</b><i>Zone 4</i></span></a>
+        <a class="ville" href="#contact"><span><b>Marseille</b><i>Zone 4</i></span></a>
+        <a class="ville last" href="tel:0699768521"><span><b>Votre commune ?</b><i>Appelez-nous</i></span></a>
     </div>
   </div>
 </section>
