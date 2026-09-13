@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=8">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=8">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=9">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=9">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=8">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=9">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -257,6 +257,18 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 .mobibar a{flex:1;padding:15px 8px;text-align:center;font-weight:700;font-size:.92rem}
 .mobibar a.call{background:var(--orange);color:#fff}
 
+/* ======== galerie chantiers ======== */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ligne);border:1px solid var(--ligne);margin-top:40px}
+.shot{position:relative;overflow:hidden;background:var(--noir);aspect-ratio:3/4}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:46px 18px 16px;
+  background:linear-gradient(transparent,rgba(5,8,12,.92));display:flex;flex-direction:column;gap:3px}
+.shot b{font-family:var(--m);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.shot span{font-size:.9rem;font-weight:500;line-height:1.25}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ligne);border:1px solid var(--ligne)}
+.duo .shot{aspect-ratio:4/5}
+
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 
@@ -266,6 +278,8 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
   .split,.simgrid,.avis{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
   .villes{grid-template-columns:repeat(2,1fr)}
+  .gal{grid-template-columns:1fr 1fr}
+  .gal .shot:nth-child(n+5){display:none}
   .mobibar{display:flex}
   .chat-btn{bottom:76px}.chat-box{bottom:146px}
   footer{padding-bottom:96px}
@@ -288,6 +302,7 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
       <li><a href="#camera">Inspection</a></li>
       <li><a href="#devis">Fosse septique</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#chantiers">Chantiers</a></li>
       <li><a href="#zones">Zones</a></li>
     </ul>
     <a class="tel" href="tel:0699768521"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.6 8.2c.9 1.9 2.4 3.4 4.3 4.3l1.2-1.2c.2-.2.5-.3.8-.2.6.2 1.2.3 1.9.3.3 0 .5.2.5.5v1.9c0 .3-.2.5-.5.5-4.9 0-8.9-4-8.9-8.9 0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5 0 .7.1 1.3.3 1.9.1.3 0 .6-.2.8l-1.3 1.2z" fill="currentColor" stroke="none"/></svg>06 99 76 85 21</span></a>
@@ -409,10 +424,11 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
 
 <!-- ============ 4. CHANTIER ============ -->
 <div class="photo rv" id="ph-chantier">
-  <img src="./img/chantier.webp" alt="Installation d'une fosse toutes eaux à la pelle mécanique">
+  <img src="./img/chantier.webp" alt="Mise en place d'une fosse toutes eaux béton Eloy Water à la grue">
   <div class="over wrap">
     <span class="mono" style="color:var(--bleu2)">Assainissement non collectif</span>
     <h2 style="max-width:16ch;margin-top:12px">Votre fosse septique,<br>posée dans les règles</h2>
+    <p class="lead" style="margin-top:14px;max-width:44ch">Cuves béton et polyéthylène, filières agréées, contrôle SPANC. Terrassement, pose et mise en service par la même équipe.</p>
   </div>
 </div>
 
@@ -541,13 +557,57 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
         <li><i>Livraison</i><span>rapport photo et plan du réseau remis en fin de chantier</span></li>
       </ul>
     </div>
-    <div class="rv"><img src="./img/regard.webp" alt="Regard de visite maçonné sur canalisation" style="width:100%;border:1px solid var(--ligne)"></div>
+    <div class="rv"><img src="./img/regard.webp" alt="Culotte de branchement et tampons de visite posés en tranchée" style="width:100%;border:1px solid var(--ligne)"></div>
+  </div>
+</section>
+
+<!-- ============ 6 bis. STATION DE RELEVAGE ============ -->
+<section class="sec" style="background:var(--gris)">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="head">
+        <span class="mono">Station de relevage</span>
+        <h2>Quand l'eau doit<br>remonter la pente</h2>
+      </div>
+      <p class="lead">Sous-sol, buanderie ou terrain en contrebas, l'évacuation gravitaire ne suffit pas. On installe et on dépanne les postes de relevage, pompes, flotteurs, clapets et alarme de niveau.</p>
+      <ul class="plist check">
+        <li><span>Installation complète, cuve, pompes et coffret d'alarme</span></li>
+        <li><span>Remplacement de pompe et de flotteurs sur poste existant</span></li>
+        <li><span>Nettoyage de cuve et remise en service</span></li>
+        <li><span>Dépannage d'urgence quand la pompe lâche</span></li>
+      </ul>
+    </div>
+    <div class="rv">
+      <div class="duo">
+        <figure class="shot"><img src="./img/relevage.webp" alt="Station de relevage Jetly Fekafos installée en regard béton" loading="lazy"><figcaption><b>Installation</b><span>Poste Jetly en regard béton</span></figcaption></figure>
+        <figure class="shot"><img src="./img/g-pompes.webp" alt="Deux pompes neuves montées sur barres de guidage dans un poste de relevage" loading="lazy"><figcaption><b>Équipement</b><span>Double pompe sur barres de guidage</span></figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 ter. GALERIE CHANTIERS ============ -->
+<section class="sec" id="chantiers">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="mono">Chantiers récents · Var et Bouches-du-Rhône</span>
+      <h2>Nos chantiers,<br>pas des photos d'agence</h2>
+      <p class="lead">Toutes les photos ci-dessous viennent de nos interventions. Vous voyez exactement le travail que vous achetez.</p>
+    </div>
+    <div class="gal rv">
+      <figure class="shot"><img src="./img/g-fosse.webp" alt="Fosse toutes eaux polyéthylène posée et raccordée en tranchée devant une villa" loading="lazy"><figcaption><b>Assainissement</b><span>Fosse toutes eaux posée et raccordée</span></figcaption></figure>
+      <figure class="shot"><img src="./img/g-epandage.webp" alt="Tranchées d'épandage avec graviers et géotextile avant remblaiement" loading="lazy"><figcaption><b>Épandage</b><span>Tranchées drainantes avant remblai</span></figcaption></figure>
+      <figure class="shot"><img src="./img/g-tranchee.webp" alt="Tranchée et pose de canalisation le long d'une maison" loading="lazy"><figcaption><b>Réseau</b><span>Création de réseau enterré</span></figcaption></figure>
+      <figure class="shot"><img src="./img/g-flotteurs.webp" alt="Flotteurs de niveau et vannes dans un poste de relevage" loading="lazy"><figcaption><b>Relevage</b><span>Flotteurs et vannes de refoulement</span></figcaption></figure>
+      <figure class="shot"><img src="./img/g-poste.webp" alt="Poste de relevage nettoyé avec clapets et pompes immergées" loading="lazy"><figcaption><b>Entretien</b><span>Poste nettoyé et remis en service</span></figcaption></figure>
+      <figure class="shot"><img src="./img/regard.webp" alt="Culotte de branchement et tampons de visite en tranchée" loading="lazy"><figcaption><b>Branchement</b><span>Culotte et tampons de visite</span></figcaption></figure>
+    </div>
   </div>
 </section>
 
 <!-- ============ 7. ZONES ============ -->
 <div class="photo rv" id="ph-plage">
-  <img src="./img/plage.webp" alt="Le camion Express'Eau en intervention sur le littoral varois">
+  <img src="./img/drone.webp" alt="Chantier de terrassement vu du ciel, mini-pelle en action">
   <div class="over wrap">
     <span class="mono" style="color:var(--bleu2)">Var 83 · Bouches-du-Rhône 13</span>
     <h2 style="margin-top:12px">Du Lavandou<br>à Aix-en-Provence</h2>
