@@ -12,8 +12,8 @@
 <meta property="og:url" content="https://express-eau-demo.vercel.app/">
 <meta property="og:title" content="Express'Eau Assainissement · Débouchage 24h/24 · Var et Bouches-du-Rhône">
 <meta property="og:description" content="Canalisation bouchée, curage, inspection caméra, fosse septique. On décroche jour et nuit, prix annoncé avant de venir. 06 99 76 85 21">
-<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=27">
-<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=27">
+<meta property="og:image" content="https://express-eau-demo.vercel.app/og.jpg?v=28">
+<meta property="og:image:secure_url" content="https://express-eau-demo.vercel.app/og.jpg?v=28">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Express'Eau Assainissement · Débouchage 24h/24">
 <meta name="twitter:description" content="Var et Bouches-du-Rhône. Curage, inspection caméra, fosse septique. 06 99 76 85 21">
-<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=27">
+<meta name="twitter:image" content="https://express-eau-demo.vercel.app/og.jpg?v=28">
 <meta name="theme-color" content="#05080C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -674,15 +674,33 @@ footer{background:#050607;color:var(--fume);padding:44px 0 110px;font-size:.85re
     </div>
     <div class="rv">
       <div class="two">
-        <div class="field"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
-        <div class="field"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+        <div class="field"><label>Prénom</label><input id="f-prenom" type="text" placeholder="Votre prénom" autocomplete="given-name"></div>
+        <div class="field"><label>Nom *</label><input id="f-nom" type="text" placeholder="Votre nom" autocomplete="family-name" required></div>
       </div>
       <div class="two">
-        <div class="field"><label>Commune</label><input type="text" placeholder="Toulon"></div>
-        <div class="field"><label>Motif</label><select><option>Canalisation bouchée</option><option>Curage de réseau</option><option>Inspection caméra</option><option>Fosse septique</option><option>Travaux de réseau</option><option>Station de relevage</option></select></div>
+        <div class="field"><label>Téléphone *</label><input id="f-tel" type="tel" placeholder="06 00 00 00 00" autocomplete="tel" required></div>
+        <div class="field"><label>Email</label><input id="f-email" type="email" placeholder="vous@email.fr" autocomplete="email"></div>
       </div>
-      <div class="field"><label>Email</label><input type="email" placeholder="vous@email.fr"></div>
-      <div class="field"><label>Ce qui se passe</label><textarea rows="4" placeholder="Depuis quand, quel appareil, est-ce que ça remonte ailleurs dans la maison"></textarea></div>
+      <div class="field"><label>Adresse de l'intervention</label><input id="f-adresse" type="text" placeholder="12 chemin des Oliviers" autocomplete="street-address"></div>
+      <div class="two">
+        <div class="field"><label>Code postal</label><input id="f-cp" type="text" inputmode="numeric" maxlength="5" placeholder="83500" autocomplete="postal-code"></div>
+        <div class="field"><label>Commune</label><input id="f-commune" type="text" placeholder="La Seyne-sur-Mer" autocomplete="address-level2"></div>
+      </div>
+      <div class="field"><label>Motif</label>
+        <select id="f-motif">
+          <option>Fosse septique</option><option>Canalisation bouchée</option><option>Curage de réseau</option>
+          <option>Inspection caméra</option><option>Travaux de réseau</option><option>Station de relevage</option>
+        </select>
+      </div>
+      <div class="two" id="blocFosse">
+        <div class="field"><label>Personnes vivant dans la maison</label>
+          <select id="f-nb"><option value="">À préciser</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+        </div>
+        <div class="field"><label>La maison est</label>
+          <select id="f-maison"><option value="">À préciser</option><option value="neuve">Neuve</option><option value="ancienne">Ancienne</option></select>
+        </div>
+      </div>
+      <div class="field"><label>Votre projet, ou ce qui se passe</label><textarea id="f-message" rows="4" placeholder="Depuis quand, quel appareil, est-ce que ça remonte ailleurs dans la maison"></textarea></div>
       <button class="cta" type="button" id="ctc">Envoyer ma demande</button>
       <div class="sent" id="ctcs">Bien reçu. On vous rappelle sous 24 h, plus vite si c'est urgent.</div>
     </div>
@@ -791,7 +809,34 @@ const cmp=document.getElementById('cmp'), rng=cmp.querySelector('input');
 function setX(){cmp.style.setProperty('--x',rng.value+'%');}
 rng.addEventListener('input',setX); setX();
 
-document.getElementById('ctc').addEventListener('click',function(){this.textContent='Demande envoyée';document.getElementById('ctcs').classList.add('on');});
+const API_EEA='https://bxdnxnwbslykpgfsdltg.supabase.co/functions/v1/express-eau';
+const val=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+document.getElementById('f-motif').addEventListener('change',function(){
+  document.getElementById('blocFosse').style.display=(this.value==='Fosse septique')?'':'none';
+});
+document.getElementById('ctc').addEventListener('click',async function(){
+  const sent=document.getElementById('ctcs');
+  if(!val('f-nom')||!val('f-tel')){ sent.textContent='Merci d\'indiquer au moins votre nom et votre téléphone.'; sent.classList.add('on'); return; }
+  this.disabled=true; const libelle=this.textContent; this.textContent='Envoi en cours…';
+  try{
+    const r=await fetch(API_EEA,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+      action:'demande',
+      type: val('f-motif')==='Fosse septique' ? 'devis' : 'contact',
+      nom:val('f-nom'), prenom:val('f-prenom'), telephone:val('f-tel'), email:val('f-email'),
+      adresse:val('f-adresse'), commune:val('f-commune'), code_postal:val('f-cp'),
+      nb_personnes:val('f-nb'), type_maison:val('f-maison'), motif:val('f-motif'), message:val('f-message')
+    })});
+    if(!r.ok) throw new Error();
+    this.textContent='Demande envoyée';
+    sent.textContent='Bien reçu. On vous rappelle sous 24 h, plus vite si c\'est urgent.';
+    sent.classList.add('on');
+    ['f-prenom','f-nom','f-tel','f-email','f-adresse','f-cp','f-commune','f-message'].forEach(i=>{const e=document.getElementById(i); if(e) e.value='';});
+  }catch(e){
+    this.disabled=false; this.textContent=libelle;
+    sent.textContent='Envoi impossible pour le moment. Appelez-nous au 06 99 76 85 21.';
+    sent.classList.add('on');
+  }
+});
 
 /* ---------- chat ---------- */
 const box=document.getElementById('chatBox'), body=document.getElementById('chatBody');

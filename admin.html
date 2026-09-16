@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Espace de gestion · Express'Eau Assainissement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2305080C%27/%3E%3Cpath d=%27M16 5c4 6 7 9 7 13a7 7 0 1 1-14 0c0-4 3-7 7-13z%27 fill=%27%230B8CF3%27/%3E%3C/svg%3E">
+<style>
+:root{
+  --orange:#F67A05;--vif:#FF9226;--bleu:#0B8CF3;--bleu2:#4FB4FF;
+  --noir:#05080C;--gris:#0B1119;--gris2:#121A24;--blanc:#F5F8FA;
+  --fume:rgba(245,248,250,.62);--ligne:rgba(120,180,235,.16);
+  --vert:#16A46B;--rouge:#E5484D;--or:#D3B169;
+  --d:'Anton',Impact,sans-serif;--b:'IBM Plex Sans',system-ui,sans-serif;--m:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--noir);color:var(--blanc);font-family:var(--b);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1100px,94vw);margin:0 auto}
+.mono{font-family:var(--m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+h1,h2{font-family:var(--d);font-weight:400;text-transform:uppercase;line-height:.95;letter-spacing:-.005em}
+
+header{position:sticky;top:0;z-index:20;background:rgba(5,8,12,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--ligne)}
+.bar{display:flex;align-items:center;gap:14px;height:62px}
+.logo{font-family:var(--d);font-size:1.15rem;line-height:.85;transform:skewX(-8deg)}
+.logo i{color:var(--bleu);font-style:normal}
+.logo b{display:block;font-family:var(--m);font-size:.5rem;font-weight:400;letter-spacing:.2em;color:var(--fume);transform:skewX(8deg)}
+.bar .sp{margin-left:auto}
+.btn{border:1px solid var(--ligne);background:transparent;color:var(--blanc);padding:9px 14px;border-radius:999px;
+  font-family:var(--b);font-size:.85rem;font-weight:600;cursor:pointer;transition:.18s;white-space:nowrap}
+.btn:hover{border-color:var(--bleu);color:var(--bleu2)}
+.btn.plein{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.plein:hover{background:var(--vif);color:#fff}
+
+/* connexion */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:min(420px,94vw);background:var(--gris);border:1px solid var(--ligne);border-radius:14px;padding:clamp(24px,5vw,38px)}
+.card h1{font-size:clamp(1.6rem,5vw,2.2rem);margin-bottom:6px}
+.card p.sub{color:var(--fume);font-size:.92rem;margin-bottom:26px}
+label{display:block;font-family:var(--m);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fume);margin:0 0 7px}
+input,textarea,select{width:100%;background:var(--gris2);border:1px solid var(--ligne);color:var(--blanc);
+  padding:13px;font-family:var(--b);font-size:.97rem;border-radius:8px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--bleu);outline-offset:-1px}
+.champ{margin-bottom:16px}
+.erreur{background:rgba(229,72,77,.14);border:1px solid rgba(229,72,77,.5);color:#ffc9cb;
+  padding:11px 13px;border-radius:8px;font-size:.88rem;margin-bottom:16px;display:none}
+.erreur.on{display:block}
+
+/* tableau de bord */
+main{padding:26px 0 90px;display:none}
+main.on{display:block}
+.titre{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.titre h2{font-size:clamp(1.5rem,4vw,2.3rem)}
+.compteurs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.kpi{background:var(--gris);border:1px solid var(--ligne);border-radius:12px;padding:16px 14px}
+.kpi b{display:block;font-family:var(--d);font-size:clamp(1.5rem,4vw,2.1rem);line-height:1;color:var(--bleu2)}
+.kpi span{font-size:.78rem;color:var(--fume)}
+.kpi.alerte b{color:var(--orange)}
+
+.filtres{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px;-webkit-overflow-scrolling:touch}
+.filtres button{border:1px solid var(--ligne);background:transparent;color:var(--fume);padding:8px 14px;border-radius:999px;
+  font-family:var(--b);font-size:.85rem;cursor:pointer;white-space:nowrap}
+.filtres button[aria-pressed="true"]{background:var(--bleu);border-color:var(--bleu);color:#fff;font-weight:600}
+
+.liste{display:flex;flex-direction:column;gap:12px}
+.dem{background:var(--gris);border:1px solid var(--ligne);border-radius:12px;overflow:hidden}
+.dem .tete{display:flex;align-items:center;gap:12px;padding:15px 17px;cursor:pointer}
+.dem .tete .qui{flex:1;min-width:0}
+.dem .tete strong{display:block;font-size:1rem}
+.dem .tete em{font-style:normal;font-size:.82rem;color:var(--fume)}
+.pastille{font-family:var(--m);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:999px;white-space:nowrap}
+.p-nouveau{background:rgba(246,122,5,.18);color:var(--orange);border:1px solid rgba(246,122,5,.45)}
+.p-rappele{background:rgba(11,140,243,.16);color:var(--bleu2);border:1px solid rgba(11,140,243,.45)}
+.p-devis_envoye{background:rgba(211,177,105,.16);color:var(--or);border:1px solid rgba(211,177,105,.45)}
+.p-gagne{background:rgba(22,164,107,.16);color:#4ADE9B;border:1px solid rgba(22,164,107,.45)}
+.p-perdu{background:rgba(245,248,250,.08);color:var(--fume);border:1px solid var(--ligne)}
+.chev{color:var(--fume);font-size:1.1rem;transition:transform .2s}
+.dem.ouvert .chev{transform:rotate(90deg)}
+.dem .corps{display:none;padding:0 17px 17px;border-top:1px solid var(--ligne)}
+.dem.ouvert .corps{display:block}
+.infos{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);border-radius:10px;overflow:hidden;margin:16px 0}
+.infos div{background:var(--gris2);padding:11px 13px}
+.infos .k{font-family:var(--m);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fume);display:block;margin-bottom:3px}
+.infos .v{font-size:.92rem;word-break:break-word}
+.msg{background:var(--gris2);border:1px solid var(--ligne);border-radius:10px;padding:13px;font-size:.92rem;white-space:pre-wrap;margin-bottom:16px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.actions a,.actions button{flex:1 1 auto;min-width:130px;text-align:center}
+.statuts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.statuts button{border:1px solid var(--ligne);background:transparent;color:var(--fume);padding:8px 12px;border-radius:8px;
+  font-family:var(--b);font-size:.82rem;cursor:pointer}
+.statuts button[aria-pressed="true"]{background:var(--bleu);border-color:var(--bleu);color:#fff;font-weight:600}
+.note textarea{min-height:76px;resize:vertical}
+.note .ligne{display:flex;gap:8px;margin-top:8px}
+.sup{border-color:rgba(229,72,77,.5);color:#ff9ea1}
+.sup:hover{background:rgba(229,72,77,.14);border-color:var(--rouge);color:#ffc9cb}
+.vide{text-align:center;color:var(--fume);padding:50px 20px;border:1px dashed var(--ligne);border-radius:12px}
+.chargement{text-align:center;color:var(--fume);padding:40px}
+@media(max-width:700px){
+  .compteurs{grid-template-columns:1fr 1fr}
+  .infos{grid-template-columns:1fr}
+  .actions a,.actions button{min-width:0;flex:1 1 46%}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= CONNEXION ================= -->
+<section class="login" id="ecranLogin">
+  <form class="card" id="formLogin" autocomplete="on">
+    <h1>Espace<br>de gestion</h1>
+    <p class="sub">Vos demandes de devis et messages, en direct depuis le site.</p>
+    <div class="erreur" id="errLogin"></div>
+    <div class="champ">
+      <label for="identifiant">Identifiant</label>
+      <input id="identifiant" name="username" type="text" autocapitalize="none" autocomplete="username" required>
+    </div>
+    <div class="champ">
+      <label for="motdepasse">Mot de passe</label>
+      <input id="motdepasse" name="password" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="btn plein" style="width:100%;padding:14px" type="submit" id="btnLogin">Se connecter</button>
+  </form>
+</section>
+
+<!-- ================= TABLEAU DE BORD ================= -->
+<header id="entete" style="display:none">
+  <div class="bar wrap">
+    <span class="logo">Express<i>'Eau</i><b>Espace de gestion</b></span>
+    <span class="sp"></span>
+    <button class="btn" id="btnRefresh" title="Actualiser">Actualiser</button>
+    <button class="btn" id="btnLogout">Quitter</button>
+  </div>
+</header>
+
+<main id="ecranAdmin">
+  <div class="wrap">
+    <div class="titre">
+      <h2>Vos demandes</h2>
+      <span class="mono" style="color:var(--fume)" id="maj"></span>
+    </div>
+
+    <div class="compteurs">
+      <div class="kpi alerte"><b id="kNouveau">0</b><span>à rappeler</span></div>
+      <div class="kpi"><b id="kSemaine">0</b><span>cette semaine</span></div>
+      <div class="kpi"><b id="kDevis">0</b><span>devis envoyés</span></div>
+      <div class="kpi"><b id="kGagne">0</b><span>chantiers signés</span></div>
+    </div>
+
+    <div class="filtres" id="filtres">
+      <button data-f="tous" aria-pressed="true">Tout</button>
+      <button data-f="nouveau">À rappeler</button>
+      <button data-f="rappele">Rappelés</button>
+      <button data-f="devis_envoye">Devis envoyés</button>
+      <button data-f="gagne">Signés</button>
+      <button data-f="perdu">Sans suite</button>
+    </div>
+
+    <div class="liste" id="liste"><div class="chargement">Chargement…</div></div>
+  </div>
+</main>
+
+<script>
+const API='https://bxdnxnwbslykpgfsdltg.supabase.co/functions/v1/express-eau';
+const CLE='eea_jeton';
+let jeton=localStorage.getItem(CLE)||'';
+let demandes=[], filtre='tous', ouvert=null;
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+async function appel(corps){
+  const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(corps)});
+  let d={}; try{d=await r.json()}catch{}
+  if(r.status===401 && corps.action!=='connexion'){ deconnexion(); throw new Error('session expirée'); }
+  if(!r.ok) throw new Error(d.erreur||'erreur');
+  return d;
+}
+
+/* ---------- connexion ---------- */
+$('#formLogin').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const err=$('#errLogin'), b=$('#btnLogin');
+  err.classList.remove('on'); b.disabled=true; b.textContent='Connexion…';
+  try{
+    const d=await appel({action:'connexion',identifiant:$('#identifiant').value.trim().toLowerCase(),mot_de_passe:$('#motdepasse').value});
+    jeton=d.jeton; localStorage.setItem(CLE,jeton);
+    $('#motdepasse').value='';
+    ouvrirAdmin();
+  }catch(ex){
+    err.textContent=ex.message==='erreur'?'Connexion impossible, réessayez.':ex.message;
+    err.classList.add('on');
+  }finally{ b.disabled=false; b.textContent='Se connecter'; }
+});
+
+function deconnexion(){
+  jeton=''; localStorage.removeItem(CLE);
+  $('#ecranLogin').style.display='grid';
+  $('#entete').style.display='none';
+  $('#ecranAdmin').classList.remove('on');
+}
+$('#btnLogout').addEventListener('click',async()=>{
+  try{ await appel({action:'deconnexion',jeton}) }catch{}
+  deconnexion();
+});
+
+function ouvrirAdmin(){
+  $('#ecranLogin').style.display='none';
+  $('#entete').style.display='block';
+  $('#ecranAdmin').classList.add('on');
+  charger();
+}
+
+/* ---------- données ---------- */
+async function charger(){
+  try{
+    const d=await appel({action:'liste',jeton});
+    demandes=d.demandes||[];
+    const h=new Date();
+    $('#maj').textContent='mis à jour à '+h.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    compter(); dessiner();
+  }catch(ex){
+    $('#liste').innerHTML='<div class="vide">'+esc(ex.message)+'</div>';
+  }
+}
+$('#btnRefresh').addEventListener('click',charger);
+
+function compter(){
+  const semaine=Date.now()-7*864e5;
+  $('#kNouveau').textContent=demandes.filter(d=>d.statut==='nouveau').length;
+  $('#kSemaine').textContent=demandes.filter(d=>new Date(d.cree_le).getTime()>semaine).length;
+  $('#kDevis').textContent=demandes.filter(d=>d.statut==='devis_envoye').length;
+  $('#kGagne').textContent=demandes.filter(d=>d.statut==='gagne').length;
+}
+
+const LIB={nouveau:'À rappeler',rappele:'Rappelé',devis_envoye:'Devis envoyé',gagne:'Signé',perdu:'Sans suite'};
+
+function quand(iso){
+  const d=new Date(iso), j=Math.floor((Date.now()-d)/864e5);
+  const heure=d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  if(j===0) return "aujourd'hui à "+heure;
+  if(j===1) return 'hier à '+heure;
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'})+' à '+heure;
+}
+
+function dessiner(){
+  const l=filtre==='tous'?demandes:demandes.filter(d=>d.statut===filtre);
+  if(!l.length){ $('#liste').innerHTML='<div class="vide">Aucune demande dans cette catégorie.</div>'; return; }
+  $('#liste').innerHTML=l.map(d=>{
+    const tel=(d.telephone||'').replace(/\s/g,'');
+    const nom=[d.prenom,d.nom].filter(Boolean).join(' ')||'Sans nom';
+    const infos=[
+      ['Téléphone',d.telephone],['Email',d.email],['Adresse',d.adresse],
+      ['Commune',[d.code_postal,d.commune].filter(Boolean).join(' ')],
+      ['Personnes au foyer',d.nb_personnes],['Maison',d.type_maison],
+      ['Objet',d.motif],['Reçue le',new Date(d.cree_le).toLocaleString('fr-FR')]
+    ].filter(x=>x[1]!==null&&x[1]!==undefined&&x[1]!=='')
+     .map(x=>'<div><span class="k">'+x[0]+'</span><span class="v">'+esc(x[1])+'</span></div>').join('');
+    return `<article class="dem${ouvert===d.id?' ouvert':''}" data-id="${d.id}">
+      <div class="tete" data-toggle>
+        <span class="chev">›</span>
+        <span class="qui"><strong>${esc(nom)}</strong><em>${esc(d.commune||d.type==='contact'?'Message':'Devis fosse septique')} · ${quand(d.cree_le)}</em></span>
+        <span class="pastille p-${d.statut}">${LIB[d.statut]||d.statut}</span>
+      </div>
+      <div class="corps">
+        <div class="infos">${infos}</div>
+        ${d.message?'<div class="msg">'+esc(d.message)+'</div>':''}
+        <div class="actions">
+          ${tel?`<a class="btn plein" href="tel:${esc(tel)}">Appeler</a><a class="btn" href="sms:${esc(tel)}">SMS</a>`:''}
+          ${d.email?`<a class="btn" href="mailto:${esc(d.email)}">Email</a>`:''}
+        </div>
+        <div class="statuts">
+          ${Object.keys(LIB).map(s=>`<button data-statut="${s}" aria-pressed="${d.statut===s}">${LIB[s]}</button>`).join('')}
+        </div>
+        <div class="note">
+          <label>Note interne</label>
+          <textarea data-note placeholder="Ce que vous avez convenu, le montant annoncé, la date de visite…">${esc(d.note_interne||'')}</textarea>
+          <div class="ligne">
+            <button class="btn" data-savenote>Enregistrer la note</button>
+            <button class="btn sup" data-sup>Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+/* ---------- interactions ---------- */
+$('#filtres').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  $('#filtres').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); filtre=b.dataset.f; dessiner();
+});
+
+$('#liste').addEventListener('click',async e=>{
+  const art=e.target.closest('.dem'); if(!art)return;
+  const id=art.dataset.id;
+
+  if(e.target.closest('[data-toggle]')){
+    ouvert = art.classList.contains('ouvert') ? null : id;
+    dessiner(); return;
+  }
+  const st=e.target.closest('[data-statut]');
+  if(st){
+    const statut=st.dataset.statut;
+    try{
+      await appel({action:'statut',jeton,id,statut});
+      const d=demandes.find(x=>x.id===id); if(d) d.statut=statut;
+      compter(); dessiner();
+    }catch(ex){ alert(ex.message); }
+    return;
+  }
+  if(e.target.closest('[data-savenote]')){
+    const t=art.querySelector('[data-note]'), b=e.target.closest('[data-savenote]');
+    b.disabled=true; b.textContent='Enregistrement…';
+    try{
+      await appel({action:'note',jeton,id,note_interne:t.value});
+      const d=demandes.find(x=>x.id===id); if(d) d.note_interne=t.value;
+      b.textContent='Note enregistrée';
+      setTimeout(()=>{b.disabled=false;b.textContent='Enregistrer la note'},1600);
+    }catch(ex){ alert(ex.message); b.disabled=false; b.textContent='Enregistrer la note'; }
+    return;
+  }
+  if(e.target.closest('[data-sup]')){
+    if(!confirm('Supprimer définitivement cette demande ?')) return;
+    try{
+      await appel({action:'supprimer',jeton,id});
+      demandes=demandes.filter(x=>x.id!==id); ouvert=null; compter(); dessiner();
+    }catch(ex){ alert(ex.message); }
+  }
+});
+
+/* ---------- démarrage ---------- */
+if(jeton){
+  appel({action:'liste',jeton}).then(d=>{ demandes=d.demandes||[]; ouvrirAdmin(); }).catch(()=>deconnexion());
+}
+setInterval(()=>{ if(jeton && $('#ecranAdmin').classList.contains('on')) charger(); }, 120000);
+</script>
+</body>
+</html>
