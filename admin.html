@@ -102,63 +102,13 @@ main.on{display:block}
 .statuts button[aria-pressed="true"]{background:var(--bleu);border-color:var(--bleu);color:#fff;font-weight:600}
 .vide{text-align:center;color:var(--fume);padding:46px 20px;border:1px dashed var(--ligne);border-radius:12px}
 
-.modale{position:fixed;inset:0;z-index:60;background:rgba(3,5,8,.86);backdrop-filter:blur(4px);display:none;overflow-y:auto;padding:14px}
-.modale.on{display:block}
-.feuille{width:min(980px,100%);margin:0 auto;background:var(--gris);border:1px solid var(--ligne);border-radius:14px;padding:clamp(18px,3vw,28px)}
-.feuille h2{font-size:1.4rem}
-.bloc{border:1px solid var(--ligne);border-radius:12px;padding:16px;margin:16px 0}
-.bloc h3{font-family:var(--m);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bleu2);margin-bottom:14px;font-weight:600}
-table.lignes{width:100%;border-collapse:collapse;font-size:.88rem}
-table.lignes th{font-family:var(--m);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fume);text-align:left;padding:0 6px 8px;font-weight:400}
-table.lignes td{padding:4px 6px;vertical-align:top}
-table.lignes input{padding:8px 9px;font-size:.87rem}
-table.lignes .num input{text-align:right}
-.tot{display:flex;justify-content:flex-end}
-.tot table{font-size:.95rem;min-width:290px}
-.tot td{padding:6px 0}
-.tot td:last-child{text-align:right;font-family:var(--m);font-weight:600;padding-left:26px}
-.tot tr.gros td{font-size:1.2rem;font-family:var(--d);padding-top:12px;border-top:1px solid var(--ligne)}
-.tot tr.gros td:last-child{color:var(--orange)}
-.pied{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;margin-top:18px}
 
-#apercu{display:none;background:#fff;color:#111;font-size:12px;line-height:1.45;padding:14mm}
-@media print{
-  body{background:#fff;color:#111}
-  header,nav.onglets,main,.modale{display:none!important}
-  #apercu{display:block!important}
-}
-#apercu h1{font-family:var(--b);font-size:20px;text-transform:none;font-weight:700}
-#apercu .ent{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #0B8CF3;padding-bottom:12px;margin-bottom:16px}
-#apercu .marque{font-size:20px;font-weight:700}
-#apercu .marque span{color:#0B8CF3}
-#apercu .marque small{display:block;font-size:9px;letter-spacing:.24em;color:#555;font-weight:400}
-#apercu .coord{font-size:10.5px;color:#333;text-align:right}
-#apercu .duo{display:flex;justify-content:space-between;gap:24px;margin-bottom:14px}
-#apercu .boite{border:1px solid #ddd;border-radius:6px;padding:10px 12px;width:48%}
-#apercu .boite b{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#777;margin-bottom:4px}
-#apercu table.d{width:100%;border-collapse:collapse;margin:12px 0}
-#apercu table.d th{background:#f2f5f8;border:1px solid #dde3ea;padding:7px 8px;text-align:left;font-size:10px;text-transform:uppercase}
-#apercu table.d td{border:1px solid #dde3ea;padding:7px 8px;vertical-align:top}
-#apercu table.d td.n{text-align:right;white-space:nowrap}
-#apercu table.d small{color:#666;display:block;margin-top:2px}
-#apercu .rec{display:flex;justify-content:flex-end;margin-top:8px}
-#apercu .rec table{border-collapse:collapse;min-width:270px}
-#apercu .rec td{padding:5px 8px}
-#apercu .rec td:last-child{text-align:right;font-weight:600}
-#apercu .rec tr.t td{border-top:2px solid #0B8CF3;font-size:15px;font-weight:700}
-#apercu .cgv{margin-top:16px;font-size:9.5px;color:#444;border-top:1px solid #ddd;padding-top:10px}
-#apercu .sign{display:flex;justify-content:space-between;gap:24px;margin-top:18px}
-#apercu .sign div{border:1px solid #ccc;border-radius:6px;padding:10px;width:48%;min-height:78px;font-size:10px;color:#555}
 
 @media(max-width:760px){
   .compteurs{grid-template-columns:1fr 1fr}
   .infos,.g2,.g3{grid-template-columns:1fr}
   .actions .btn{flex:1 1 46%;min-width:0}
-  table.lignes,table.lignes tbody,table.lignes tr,table.lignes td{display:block;width:100%}
-  table.lignes thead{display:none}
-  table.lignes tr{border:1px solid var(--ligne);border-radius:10px;padding:8px;margin-bottom:10px}
-  table.lignes td.num{display:inline-block;width:32%}
-}
+        }
 </style>
 </head>
 <body>
@@ -166,7 +116,7 @@ table.lignes .num input{text-align:right}
 <section class="login" id="ecranLogin">
   <form class="card" id="formLogin">
     <h1>Espace<br>de gestion</h1>
-    <p style="color:var(--fume);font-size:.92rem;margin-bottom:24px">Demandes, devis et tarifs, au même endroit.</p>
+    <p style="color:var(--fume);font-size:.92rem;margin-bottom:24px">Toutes les demandes envoyées depuis votre site.</p>
     <div class="erreur" id="errLogin"></div>
     <div class="champ"><label for="identifiant">Identifiant</label><input id="identifiant" name="username" autocapitalize="none" autocomplete="username" required></div>
     <div class="champ"><label for="motdepasse">Mot de passe</label><input id="motdepasse" name="password" type="password" autocomplete="current-password" required></div>
@@ -184,9 +134,7 @@ table.lignes .num input{text-align:right}
   <div class="wrap">
     <nav class="onglets" id="onglets">
       <button data-v="demandes" aria-selected="true">Demandes <span class="pt" id="ptDem">0</span></button>
-      <button data-v="devis" aria-selected="false">Devis</button>
-      <button data-v="catalogue" aria-selected="false">Mes tarifs</button>
-      <button data-v="reglages" aria-selected="false">Mon entreprise</button>
+      <button data-v="reglages" aria-selected="false">Mes coordonnées</button>
     </nav>
   </div>
 </header>
@@ -213,33 +161,9 @@ table.lignes .num input{text-align:right}
       <div class="liste" id="listeDem"><div class="vide">Chargement…</div></div>
     </section>
 
-    <section class="vue" id="v-devis">
-      <div class="titre"><h2>Vos devis</h2><button class="btn plein" id="btnNouveauDevis">Nouveau devis</button></div>
-      <div class="compteurs">
-        <div class="kpi alerte"><b id="dBrouillon">0</b><span>brouillons</span></div>
-        <div class="kpi"><b id="dEnvoye">0</b><span>en attente de réponse</span></div>
-        <div class="kpi vert"><b id="dAccepte">0</b><span>acceptés</span></div>
-        <div class="kpi"><b id="dMontant">0 €</b><span>signé cette année</span></div>
-      </div>
-      <div class="filtres" id="filtresDev">
-        <button data-f="tous" aria-pressed="true">Tout</button>
-        <button data-f="brouillon">Brouillons</button>
-        <button data-f="envoye">Envoyés</button>
-        <button data-f="accepte">Acceptés</button>
-        <button data-f="refuse">Refusés</button>
-      </div>
-      <div class="liste" id="listeDev"><div class="vide">Chargement…</div></div>
-    </section>
-
-    <section class="vue" id="v-catalogue">
-      <div class="titre"><h2>Mes tarifs</h2><button class="btn plein" id="btnNouvellePresta">Ajouter</button></div>
-      <p style="color:var(--fume);font-size:.92rem;margin-bottom:16px">Ces prestations s'ajoutent en un clic dans vos devis. Les prix sont hors taxes, la TVA est appliquée ensuite.</p>
-      <div class="liste" id="listePresta"><div class="vide">Chargement…</div></div>
-    </section>
-
     <section class="vue" id="v-reglages">
-      <div class="titre"><h2>Mon entreprise</h2></div>
-      <p style="color:var(--fume);font-size:.92rem;margin-bottom:16px">Ces informations s'impriment en tête de chaque devis. Le SIRET et l'assurance décennale sont obligatoires sur un devis de travaux.</p>
+      <div class="titre"><h2>Mes coordonnées</h2></div>
+      <p style="color:var(--fume);font-size:.92rem;margin-bottom:16px">Vos coordonnées, utilisées pour l'espace de gestion et les notifications.</p>
       <form id="formReglages">
         <div class="bloc"><h3>Identité</h3>
           <div class="g2">
@@ -257,32 +181,6 @@ table.lignes .num input{text-align:right}
             <div class="champ"><label>Site</label><input name="site"></div>
           </div>
         </div>
-        <div class="bloc"><h3>Mentions obligatoires</h3>
-          <div class="g3">
-            <div class="champ"><label>SIRET</label><input name="siret"></div>
-            <div class="champ"><label>TVA intracommunautaire</label><input name="tva_intra"></div>
-            <div class="champ"><label>RCS ou répertoire des métiers</label><input name="rcs"></div>
-          </div>
-          <div class="g2">
-            <div class="champ"><label>Assurance décennale</label><input name="assurance" placeholder="Nom de l'assureur"></div>
-            <div class="champ"><label>N° de police et couverture</label><input name="assurance_police"></div>
-          </div>
-        </div>
-        <div class="bloc"><h3>Règlement</h3>
-          <div class="g2">
-            <div class="champ"><label>IBAN</label><input name="iban"></div>
-            <div class="champ"><label>BIC</label><input name="bic"></div>
-          </div>
-          <div class="g3">
-            <div class="champ"><label>Validité des devis (jours)</label><input name="validite_jours" type="number"></div>
-            <div class="champ"><label>Acompte par défaut (%)</label><input name="acompte_pct" type="number"></div>
-            <div class="champ"><label>TVA par défaut (%)</label><input name="tva_defaut" type="number"></div>
-          </div>
-        </div>
-        <div class="bloc"><h3>Textes des devis</h3>
-          <div class="champ"><label>Mentions sous le tableau</label><textarea name="mentions" rows="2"></textarea></div>
-          <div class="champ"><label>Conditions générales</label><textarea name="conditions" rows="4"></textarea></div>
-        </div>
         <button class="btn plein" id="btnReglages" style="padding:13px 24px">Enregistrer</button>
       </form>
     </section>
@@ -290,82 +188,13 @@ table.lignes .num input{text-align:right}
   </div>
 </main>
 
-<div class="modale" id="modale">
-  <div class="feuille">
-    <div class="titre">
-      <div><h2 id="devTitre">Nouveau devis</h2><span class="mono" style="color:var(--fume)" id="devNum"></span></div>
-      <button class="btn" id="devFermer">Fermer</button>
-    </div>
-
-    <div class="bloc"><h3>Client</h3>
-      <div class="champ"><label>Reprendre une demande reçue</label><select id="devDemande"><option value="">Saisie libre</option></select></div>
-      <div class="g2">
-        <div class="champ"><label>Prénom</label><input id="d-prenom"></div>
-        <div class="champ"><label>Nom</label><input id="d-nom"></div>
-      </div>
-      <div class="g2">
-        <div class="champ"><label>Téléphone</label><input id="d-tel"></div>
-        <div class="champ"><label>Email</label><input id="d-email"></div>
-      </div>
-      <div class="champ"><label>Adresse de facturation</label><input id="d-adresse"></div>
-      <div class="g2">
-        <div class="champ"><label>Code postal</label><input id="d-cp"></div>
-        <div class="champ"><label>Ville</label><input id="d-ville"></div>
-      </div>
-      <div class="champ"><label>Adresse du chantier si différente</label><input id="d-chantier"></div>
-      <div class="champ"><label>Objet des travaux</label><input id="d-objet" placeholder="Réhabilitation de l'assainissement non collectif"></div>
-    </div>
-
-    <div class="bloc"><h3>Prestations</h3>
-      <div class="champ"><label>Ajouter depuis mes tarifs</label>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <select id="devCatalogue" style="flex:1 1 220px"><option value="">Choisir une prestation…</option></select>
-          <button class="btn" id="devAjoutCat">Ajouter</button>
-          <button class="btn" id="devAjoutVide">Ligne libre</button>
-        </div>
-      </div>
-      <table class="lignes" id="devLignes">
-        <thead><tr><th style="width:44%">Désignation</th><th style="width:11%">Qté</th><th style="width:13%">Unité</th><th style="width:14%">P.U. HT</th><th style="width:10%">TVA</th><th style="width:8%"></th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <div class="bloc"><h3>Conditions</h3>
-      <div class="g3">
-        <div class="champ"><label>Remise globale (%)</label><input id="d-remise" type="number" value="0"></div>
-        <div class="champ"><label>Acompte (%)</label><input id="d-acompte" type="number" value="30"></div>
-        <div class="champ"><label>Validité (jours)</label><input id="d-validite" type="number" value="30"></div>
-      </div>
-      <div class="champ"><label>Message au client, imprimé sur le devis</label><textarea id="d-noteclient" rows="2"></textarea></div>
-      <div class="champ"><label>Note interne, jamais imprimée</label><textarea id="d-noteinterne" rows="2"></textarea></div>
-      <div class="tot">
-        <table>
-          <tr><td>Total HT</td><td id="t-ht">0,00 €</td></tr>
-          <tr><td>TVA</td><td id="t-tva">0,00 €</td></tr>
-          <tr class="gros"><td>Total TTC</td><td id="t-ttc">0,00 €</td></tr>
-          <tr><td style="color:var(--fume);font-size:.85rem">Acompte à la commande</td><td id="t-ac" style="color:var(--fume)">0,00 €</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="pied">
-      <button class="btn sup" id="devSuppr" style="margin-right:auto;display:none">Supprimer</button>
-      <button class="btn" id="devImprimer">Imprimer ou PDF</button>
-      <button class="btn" id="devEnregistrer">Enregistrer</button>
-      <button class="btn plein" id="devEnvoyer">Marquer envoyé</button>
-      <button class="btn vert" id="devAccepte">Marquer accepté</button>
-    </div>
-  </div>
-</div>
-
-<div id="apercu"></div>
 
 <script>
 const API='https://bxdnxnwbslykpgfsdltg.supabase.co/functions/v1/express-eau';
 const CLE='eea_jeton';
 let jeton=localStorage.getItem(CLE)||'';
-let demandes=[],devis=[],prestations=[],reglages={},courant=null;
-let fDem='tous',fDev='tous',ouvDem=null,ouvDev=null;
+let demandes=[],reglages={};
+let fDem='tous',ouvDem=null;
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -405,13 +234,10 @@ $('#onglets').addEventListener('click',e=>{
 
 async function toutCharger(){
   try{
-    const r=await Promise.all([
-      appel({action:'liste',jeton}),appel({action:'devis_liste',jeton}),
-      appel({action:'prestations',jeton}),appel({action:'reglages',jeton})
-    ]);
-    demandes=r[0].demandes||[];devis=r[1].devis||[];prestations=r[2].prestations||[];reglages=r[3].reglages||{};
+    const r=await Promise.all([appel({action:'liste',jeton}),appel({action:'reglages',jeton})]);
+    demandes=r[0].demandes||[];reglages=r[1].reglages||{};
     $('#maj').textContent='mis à jour à '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-    compterDem();dessinerDem();compterDev();dessinerDev();dessinerPresta();remplirReglages();remplirSelects();
+    compterDem();dessinerDem();remplirReglages();
   }catch(ex){$('#listeDem').innerHTML='<div class="vide">'+esc(ex.message)+'</div>'}
 }
 $('#btnRefresh').addEventListener('click',toutCharger);
@@ -450,7 +276,7 @@ function dessinerDem(){
         '<div class="actions">'+
           (tel?'<a class="btn plein" href="tel:'+esc(tel)+'">Appeler</a><a class="btn" href="sms:'+esc(tel)+'">SMS</a>':'')+
           (d.email?'<a class="btn" href="mailto:'+esc(d.email)+'">Email</a>':'')+
-          '<button class="btn" data-devis>Créer le devis</button></div>'+
+          '</div>'+
         '<div class="statuts">'+Object.keys(LIBD).map(s=>'<button data-statut="'+s+'" aria-pressed="'+(d.statut===s)+'">'+LIBD[s]+'</button>').join('')+'</div>'+
         '<label>Note interne</label>'+
         '<textarea data-note rows="2" placeholder="Ce que vous avez convenu, le montant annoncé, la date de visite…">'+esc(d.note_interne||'')+'</textarea>'+
@@ -476,251 +302,7 @@ $('#listeDem').addEventListener('click',async e=>{
   if(e.target.closest('[data-sup]')){
     if(!confirm('Supprimer définitivement cette demande ?'))return;
     try{await appel({action:'supprimer',jeton,id});demandes=demandes.filter(x=>x.id!==id);ouvDem=null;compterDem();dessinerDem()}catch(ex){alert(ex.message)}return}
-  if(e.target.closest('[data-devis]')){nouveauDevis(demandes.find(x=>x.id===id));}
 });
-
-/* ===== DEVIS ===== */
-const LIBV={brouillon:'Brouillon',envoye:'Envoyé',accepte:'Accepté',refuse:'Refusé',expire:'Expiré'};
-function compterDev(){
-  $('#dBrouillon').textContent=devis.filter(d=>d.statut==='brouillon').length;
-  $('#dEnvoye').textContent=devis.filter(d=>d.statut==='envoye').length;
-  $('#dAccepte').textContent=devis.filter(d=>d.statut==='accepte').length;
-  const an=new Date().getFullYear();
-  const m=devis.filter(d=>d.statut==='accepte'&&new Date(d.cree_le).getFullYear()===an).reduce((s,d)=>s+Number(d.total_ttc||0),0);
-  $('#dMontant').textContent=Math.round(m).toLocaleString('fr-FR')+' \u20AC';
-}
-function dessinerDev(){
-  const l=fDev==='tous'?devis:devis.filter(d=>d.statut===fDev);
-  if(!l.length){$('#listeDev').innerHTML='<div class="vide">Aucun devis ici. Créez le premier avec le bouton en haut.</div>';return}
-  $('#listeDev').innerHTML=l.map(d=>{
-    const nom=[d.client_prenom,d.client_nom].filter(Boolean).join(' ')||'Sans nom';
-    const lignes=(d.lignes||[]).map(x=>'<div>· '+esc(x.libelle)+' <span style="color:var(--fume)">'+nb(x.qte)+' '+esc(x.unite||'')+' × '+eur(x.prix_ht)+'</span></div>').join('');
-    const tel=(d.client_telephone||'').replace(/\s/g,'');
-    return '<article class="item'+(ouvDev===d.id?' ouvert':'')+'" data-id="'+d.id+'">'+
-      '<div class="tete" data-toggle><span class="chev">›</span>'+
-      '<span class="qui"><strong>'+esc(d.numero||'Devis')+' · '+esc(nom)+'</strong><em>'+esc(d.objet||'')+' · '+quand(d.cree_le)+'</em></span>'+
-      '<span style="font-family:var(--m);font-weight:600;white-space:nowrap">'+eur(d.total_ttc)+'</span>'+
-      '<span class="pastille p-'+d.statut+'">'+(LIBV[d.statut]||d.statut)+'</span></div>'+
-      '<div class="corps"><div class="msg" style="margin-top:14px">'+(lignes||'Aucune ligne')+'</div>'+
-      '<div class="infos">'+
-        '<div><span class="k">Total HT</span><span class="v">'+eur(d.total_ht)+'</span></div>'+
-        '<div><span class="k">TVA</span><span class="v">'+eur(d.total_tva)+'</span></div>'+
-        '<div><span class="k">Total TTC</span><span class="v">'+eur(d.total_ttc)+'</span></div>'+
-        '<div><span class="k">Acompte '+nb(d.acompte_pct)+' %</span><span class="v">'+eur(Number(d.total_ttc||0)*nb(d.acompte_pct)/100)+'</span></div></div>'+
-      '<div class="actions"><button class="btn plein" data-ouvrir>Ouvrir le devis</button>'+
-        (tel?'<a class="btn" href="tel:'+esc(tel)+'">Appeler</a>':'')+
-        (d.client_email?'<a class="btn" href="mailto:'+esc(d.client_email)+'?subject='+encodeURIComponent('Votre devis '+(d.numero||''))+'">Email</a>':'')+
-      '</div></div></article>';
-  }).join('');
-}
-$('#filtresDev').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  $('#filtresDev').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true');fDev=b.dataset.f;dessinerDev()});
-$('#listeDev').addEventListener('click',e=>{
-  const art=e.target.closest('.item');if(!art)return;const id=art.dataset.id;
-  if(e.target.closest('[data-toggle]')){ouvDev=art.classList.contains('ouvert')?null:id;dessinerDev();return}
-  if(e.target.closest('[data-ouvrir]')){editerDevis(devis.find(x=>x.id===id))}
-});
-
-function remplirSelects(){
-  $('#devDemande').innerHTML='<option value="">Saisie libre</option>'+demandes.map(d=>
-    '<option value="'+d.id+'">'+esc([d.prenom,d.nom].filter(Boolean).join(' '))+' · '+esc(d.commune||'')+' · '+esc(d.motif||'')+'</option>').join('');
-  const cats=[...new Set(prestations.map(p=>p.categorie))];
-  $('#devCatalogue').innerHTML='<option value="">Choisir une prestation…</option>'+cats.map(c=>
-    '<optgroup label="'+esc(c)+'">'+prestations.filter(p=>p.categorie===c&&p.actif!==false).map(p=>
-      '<option value="'+p.id+'">'+esc(p.libelle)+' · '+eur(p.prix_ht)+' HT</option>').join('')+'</optgroup>').join('');
-}
-function nouveauDevis(d){
-  courant={id:null,numero:null,statut:'brouillon',lignes:[],
-    client_prenom:d&&d.prenom||'',client_nom:d&&d.nom||'',client_telephone:d&&d.telephone||'',client_email:d&&d.email||'',
-    client_adresse:d&&d.adresse||'',client_code_postal:d&&d.code_postal||'',client_ville:d&&d.commune||'',
-    chantier_adresse:d?[d.adresse,d.commune].filter(Boolean).join(', '):'',
-    objet:d&&d.motif||'',demande_id:d&&d.id||null,
-    remise_globale:0,acompte_pct:nb(reglages.acompte_pct)||30,validite_jours:nb(reglages.validite_jours)||30,
-    note_client:'',note_interne:''};
-  afficherEditeur();
-}
-function editerDevis(d){if(!d)return;courant=JSON.parse(JSON.stringify(d));afficherEditeur()}
-function afficherEditeur(){
-  $('#devTitre').textContent=courant.id?'Devis':'Nouveau devis';
-  $('#devNum').textContent=courant.numero?courant.numero+' · '+(LIBV[courant.statut]||''):'numéro attribué à l\'enregistrement';
-  $('#devDemande').value=courant.demande_id||'';
-  $('#d-prenom').value=courant.client_prenom||'';$('#d-nom').value=courant.client_nom||'';
-  $('#d-tel').value=courant.client_telephone||'';$('#d-email').value=courant.client_email||'';
-  $('#d-adresse').value=courant.client_adresse||'';$('#d-cp').value=courant.client_code_postal||'';
-  $('#d-ville').value=courant.client_ville||'';$('#d-chantier').value=courant.chantier_adresse||'';
-  $('#d-objet').value=courant.objet||'';$('#d-remise').value=nb(courant.remise_globale);
-  $('#d-acompte').value=nb(courant.acompte_pct);$('#d-validite').value=nb(courant.validite_jours);
-  $('#d-noteclient').value=courant.note_client||'';$('#d-noteinterne').value=courant.note_interne||'';
-  $('#devSuppr').style.display=courant.id?'inline-block':'none';
-  dessinerLignes();$('#modale').classList.add('on');document.body.style.overflow='hidden';
-}
-$('#devFermer').addEventListener('click',()=>{$('#modale').classList.remove('on');document.body.style.overflow=''});
-$('#devDemande').addEventListener('change',function(){
-  const d=demandes.find(x=>x.id===this.value);if(!d)return;
-  $('#d-prenom').value=d.prenom||'';$('#d-nom').value=d.nom||'';$('#d-tel').value=d.telephone||'';
-  $('#d-email').value=d.email||'';$('#d-adresse').value=d.adresse||'';$('#d-cp').value=d.code_postal||'';
-  $('#d-ville').value=d.commune||'';$('#d-chantier').value=[d.adresse,d.commune].filter(Boolean).join(', ');
-  if(!$('#d-objet').value)$('#d-objet').value=d.motif||'';
-  courant.demande_id=d.id;
-});
-function dessinerLignes(){
-  $('#devLignes tbody').innerHTML=(courant.lignes||[]).map((l,i)=>
-    '<tr data-i="'+i+'">'+
-    '<td><input data-c="libelle" value="'+esc(l.libelle)+'" placeholder="Désignation">'+
-        '<input data-c="detail" value="'+esc(l.detail||'')+'" placeholder="Précisions" style="margin-top:5px;font-size:.82rem"></td>'+
-    '<td class="num"><input data-c="qte" value="'+nb(l.qte)+'" inputmode="decimal"></td>'+
-    '<td><input data-c="unite" value="'+esc(l.unite||'forfait')+'"></td>'+
-    '<td class="num"><input data-c="prix_ht" value="'+nb(l.prix_ht)+'" inputmode="decimal"></td>'+
-    '<td class="num"><input data-c="tva" value="'+nb(l.tva)+'" inputmode="decimal"></td>'+
-    '<td style="text-align:right"><button class="btn sup" data-del style="padding:7px 11px">✕</button></td></tr>').join('');
-  calculer();
-}
-function lireLignes(){
-  courant.lignes=[...$('#devLignes tbody').querySelectorAll('tr')].map(tr=>({
-    libelle:tr.querySelector('[data-c="libelle"]').value,detail:tr.querySelector('[data-c="detail"]').value,
-    qte:nb(tr.querySelector('[data-c="qte"]').value),unite:tr.querySelector('[data-c="unite"]').value,
-    prix_ht:nb(tr.querySelector('[data-c="prix_ht"]').value),tva:nb(tr.querySelector('[data-c="tva"]').value),remise_pct:0}));
-}
-function calculer(){
-  lireLignes();
-  const rg=nb($('#d-remise').value);let ht=0,tva=0;
-  for(const l of courant.lignes){const base=l.qte*l.prix_ht*(1-rg/100);ht+=base;tva+=base*l.tva/100}
-  ht=Math.round(ht*100)/100;tva=Math.round(tva*100)/100;
-  $('#t-ht').textContent=eur(ht);$('#t-tva').textContent=eur(tva);$('#t-ttc').textContent=eur(ht+tva);
-  $('#t-ac').textContent=eur((ht+tva)*nb($('#d-acompte').value)/100);
-  courant.total_ht=ht;courant.total_tva=tva;courant.total_ttc=Math.round((ht+tva)*100)/100;
-}
-$('#devLignes').addEventListener('input',calculer);
-$('#d-remise').addEventListener('input',calculer);
-$('#d-acompte').addEventListener('input',calculer);
-$('#devLignes').addEventListener('click',e=>{
-  const b=e.target.closest('[data-del]');if(!b)return;
-  lireLignes();courant.lignes.splice(Number(b.closest('tr').dataset.i),1);dessinerLignes();
-});
-$('#devAjoutCat').addEventListener('click',()=>{
-  const p=prestations.find(x=>x.id===$('#devCatalogue').value);if(!p)return;
-  lireLignes();
-  courant.lignes.push({libelle:p.libelle,detail:p.detail||'',qte:1,unite:p.unite||'forfait',prix_ht:Number(p.prix_ht),tva:Number(p.tva),remise_pct:0});
-  dessinerLignes();
-});
-$('#devAjoutVide').addEventListener('click',()=>{
-  lireLignes();
-  courant.lignes.push({libelle:'',detail:'',qte:1,unite:'forfait',prix_ht:0,tva:nb(reglages.tva_defaut)||10,remise_pct:0});
-  dessinerLignes();
-});
-function collecter(){
-  calculer();
-  const o=Object.assign({},courant);
-  o.demande_id=$('#devDemande').value||null;
-  o.client_prenom=$('#d-prenom').value;o.client_nom=$('#d-nom').value;o.client_telephone=$('#d-tel').value;
-  o.client_email=$('#d-email').value;o.client_adresse=$('#d-adresse').value;o.client_code_postal=$('#d-cp').value;
-  o.client_ville=$('#d-ville').value;o.chantier_adresse=$('#d-chantier').value;o.objet=$('#d-objet').value;
-  o.remise_globale=nb($('#d-remise').value);o.acompte_pct=nb($('#d-acompte').value);o.validite_jours=nb($('#d-validite').value);
-  o.note_client=$('#d-noteclient').value;o.note_interne=$('#d-noteinterne').value;
-  return o;
-}
-async function sauver(statut){
-  const d=collecter();if(statut)d.statut=statut;
-  const b=$('#devEnregistrer');b.disabled=true;b.textContent='Enregistrement…';
-  try{
-    const r=await appel({action:'devis_maj',jeton,devis:d});
-    courant.id=r.id||courant.id;if(r.numero)courant.numero=r.numero;
-    if(statut)courant.statut=statut;
-    await toutCharger();
-    $('#devNum').textContent=(courant.numero||'')+' · '+(LIBV[courant.statut]||'');
-    $('#devSuppr').style.display='inline-block';
-    b.textContent='Enregistré';setTimeout(()=>{b.disabled=false;b.textContent='Enregistrer'},1400);
-  }catch(ex){alert(ex.message);b.disabled=false;b.textContent='Enregistrer'}
-}
-$('#devEnregistrer').addEventListener('click',()=>sauver());
-$('#devEnvoyer').addEventListener('click',()=>sauver('envoye'));
-$('#devAccepte').addEventListener('click',()=>sauver('accepte'));
-$('#devSuppr').addEventListener('click',async()=>{
-  if(!courant.id||!confirm('Supprimer ce devis ?'))return;
-  try{await appel({action:'devis_suppr',jeton,id:courant.id});$('#modale').classList.remove('on');document.body.style.overflow='';toutCharger()}catch(ex){alert(ex.message)}
-});
-
-$('#devImprimer').addEventListener('click',()=>{
-  const d=collecter(),r=reglages;
-  const dt=new Date(),fin=new Date(dt.getTime()+nb(d.validite_jours)*864e5),rg=nb(d.remise_globale);
-  const lignes=d.lignes.map(l=>{
-    const tot=l.qte*l.prix_ht*(1-rg/100);
-    return '<tr><td>'+esc(l.libelle)+(l.detail?'<small>'+esc(l.detail)+'</small>':'')+'</td>'+
-      '<td class="n">'+nb(l.qte)+'</td><td class="n">'+esc(l.unite||'')+'</td>'+
-      '<td class="n">'+eur(l.prix_ht)+'</td><td class="n">'+nb(l.tva)+' %</td><td class="n">'+eur(tot)+'</td></tr>'}).join('');
-  const ac=d.total_ttc*nb(d.acompte_pct)/100;
-  $('#apercu').innerHTML=
-    '<div class="ent"><div><div class="marque">EXPRESS<span>\'EAU</span><small>ASSAINISSEMENT</small></div>'+
-      '<div style="font-size:10.5px;color:#444;margin-top:7px">'+esc(r.raison_sociale||'')+' '+esc(r.forme||'')+'<br>'+
-      esc(r.adresse||'')+'<br>'+esc(r.code_postal||'')+' '+esc(r.ville||'')+'</div></div>'+
-      '<div class="coord">'+esc(r.telephone||'')+'<br>'+esc(r.email||'')+'<br>'+esc(r.site||'')+'<br>SIRET '+esc(r.siret||'')+
-      (r.tva_intra?'<br>TVA '+esc(r.tva_intra):'')+'</div></div>'+
-    '<h1>Devis '+esc(d.numero||'')+'</h1>'+
-    '<div style="font-size:10.5px;color:#555;margin-bottom:12px">Établi le '+dt.toLocaleDateString('fr-FR')+' · Valable jusqu\'au '+fin.toLocaleDateString('fr-FR')+'</div>'+
-    '<div class="duo"><div class="boite"><b>Client</b>'+esc([d.client_prenom,d.client_nom].filter(Boolean).join(' '))+'<br>'+
-      esc(d.client_adresse||'')+'<br>'+esc(d.client_code_postal||'')+' '+esc(d.client_ville||'')+'<br>'+
-      esc(d.client_telephone||'')+(d.client_email?' · '+esc(d.client_email):'')+'</div>'+
-      '<div class="boite"><b>Chantier</b>'+esc(d.chantier_adresse||d.client_adresse||'')+'<br><br><b>Objet</b>'+esc(d.objet||'')+'</div></div>'+
-    '<table class="d"><thead><tr><th>Désignation</th><th class="n">Qté</th><th class="n">Unité</th><th class="n">P.U. HT</th><th class="n">TVA</th><th class="n">Total HT</th></tr></thead><tbody>'+lignes+'</tbody></table>'+
-    (rg?'<div style="text-align:right;font-size:11px">Remise globale appliquée : '+rg+' %</div>':'')+
-    '<div class="rec"><table>'+
-      '<tr><td>Total HT</td><td>'+eur(d.total_ht)+'</td></tr>'+
-      '<tr><td>TVA</td><td>'+eur(d.total_tva)+'</td></tr>'+
-      '<tr class="t"><td>Total TTC</td><td>'+eur(d.total_ttc)+'</td></tr>'+
-      '<tr><td>Acompte à la commande ('+nb(d.acompte_pct)+' %)</td><td>'+eur(ac)+'</td></tr>'+
-      '<tr><td>Solde à la fin des travaux</td><td>'+eur(d.total_ttc-ac)+'</td></tr></table></div>'+
-    (d.note_client?'<div style="margin-top:12px;font-size:11px"><b>Précisions</b><br>'+esc(d.note_client).replace(/\n/g,'<br>')+'</div>':'')+
-    '<div class="cgv"><b>Mentions</b><br>'+esc(r.mentions||'')+'<br><br><b>Conditions</b><br>'+esc(r.conditions||'')+'<br><br>'+
-      (r.assurance?'Assurance décennale : '+esc(r.assurance)+' · '+esc(r.assurance_police||'')+'<br>':'')+
-      (r.rcs?'Immatriculation : '+esc(r.rcs)+'<br>':'')+
-      (r.iban?'Règlement par virement · IBAN '+esc(r.iban)+' · BIC '+esc(r.bic||''):'')+'</div>'+
-    '<div class="sign"><div><b>Le client</b><br>Bon pour accord, date et signature<br>précédées de la mention « lu et approuvé »</div>'+
-      '<div><b>L\'entreprise</b><br>'+esc(r.raison_sociale||'')+'</div></div>';
-  window.print();
-});
-
-/* ===== CATALOGUE ===== */
-function dessinerPresta(){
-  if(!prestations.length){$('#listePresta').innerHTML='<div class="vide">Aucune prestation.</div>';return}
-  const cats=[...new Set(prestations.map(p=>p.categorie))];
-  $('#listePresta').innerHTML=cats.map(c=>
-    '<div style="margin:8px 0 2px"><span class="mono" style="color:var(--bleu2)">'+esc(c)+'</span></div>'+
-    prestations.filter(p=>p.categorie===c).map(p=>
-    '<article class="item" data-id="'+p.id+'" style="margin-bottom:11px">'+
-      '<div class="tete" data-toggle><span class="chev">›</span>'+
-        '<span class="qui"><strong>'+esc(p.libelle)+'</strong><em>'+esc(p.detail||'')+'</em></span>'+
-        '<span style="font-family:var(--m);font-weight:600;white-space:nowrap">'+eur(p.prix_ht)+' HT</span></div>'+
-      '<div class="corps"><div style="height:14px"></div>'+
-        '<div class="g3">'+
-          '<div class="champ"><label>Catégorie</label><input data-p="categorie" value="'+esc(p.categorie)+'"></div>'+
-          '<div class="champ"><label>Unité</label><input data-p="unite" value="'+esc(p.unite||'')+'"></div>'+
-          '<div class="champ"><label>Ordre</label><input data-p="ordre" type="number" value="'+(p.ordre||100)+'"></div></div>'+
-        '<div class="champ"><label>Libellé</label><input data-p="libelle" value="'+esc(p.libelle)+'"></div>'+
-        '<div class="champ"><label>Détail</label><input data-p="detail" value="'+esc(p.detail||'')+'"></div>'+
-        '<div class="g2"><div class="champ"><label>Prix HT</label><input data-p="prix_ht" value="'+p.prix_ht+'" inputmode="decimal"></div>'+
-          '<div class="champ"><label>TVA (%)</label><input data-p="tva" value="'+p.tva+'" inputmode="decimal"></div></div>'+
-        '<div style="display:flex;gap:8px"><button class="btn plein" data-savep>Enregistrer</button><button class="btn sup" data-supp>Supprimer</button></div>'+
-      '</div></article>').join('')).join('');
-}
-$('#listePresta').addEventListener('click',async e=>{
-  const art=e.target.closest('.item');if(!art)return;const id=art.dataset.id;
-  if(e.target.closest('[data-toggle]')){art.classList.toggle('ouvert');return}
-  if(e.target.closest('[data-savep]')){
-    const g=k=>art.querySelector('[data-p="'+k+'"]').value;
-    try{await appel({action:'prestation_maj',jeton,prestation:{id,categorie:g('categorie'),libelle:g('libelle'),
-      detail:g('detail'),unite:g('unite'),prix_ht:nb(g('prix_ht')),tva:nb(g('tva')),ordre:nb(g('ordre'))}});
-      await toutCharger()}catch(ex){alert(ex.message)}return}
-  if(e.target.closest('[data-supp]')){
-    if(!confirm('Supprimer cette prestation du catalogue ?'))return;
-    try{await appel({action:'prestation_suppr',jeton,id});await toutCharger()}catch(ex){alert(ex.message)}}
-});
-$('#btnNouvellePresta').addEventListener('click',async()=>{
-  const libelle=prompt('Nom de la prestation ?');if(!libelle)return;
-  const prix=nb(prompt('Prix HT ?','0'));
-  try{await appel({action:'prestation_maj',jeton,prestation:{categorie:'Divers',libelle,prix_ht:prix,tva:nb(reglages.tva_defaut)||10,unite:'forfait',ordre:200}});await toutCharger()}catch(ex){alert(ex.message)}
-});
-$('#btnNouveauDevis').addEventListener('click',()=>nouveauDevis(null));
 
 /* ===== RÉGLAGES ===== */
 function remplirReglages(){
@@ -737,7 +319,7 @@ $('#formReglages').addEventListener('submit',async e=>{
 });
 
 if(jeton) appel({action:'liste',jeton}).then(()=>ouvrir()).catch(()=>deconnexion());
-setInterval(()=>{if(jeton&&$('#ecranAdmin').classList.contains('on')&&!$('#modale').classList.contains('on'))toutCharger()},180000);
+setInterval(()=>{if(jeton&&$('#ecranAdmin').classList.contains('on'))toutCharger()},180000);
 </script>
 </body>
 </html>
